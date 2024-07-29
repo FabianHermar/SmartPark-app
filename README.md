@@ -1,50 +1,27 @@
-# Welcome to your Expo app 👋
+# 🅿️ SmartPark - Your Ideal Parking Companion
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to SmartPark, the ultimate solution to simplify your parking experience. With our app, seamlessly access your parking lot, make fast and secure payments, and purchase exclusive memberships with just a few taps. Give your routine a break and let SmartPark take care of the rest - parking has never been easier!
 
-## Get started
+## 🚗 What is SmartPark?
 
-1. Install dependencies
+Discover SmartPark, the ultimate solution to simplify your parking experience. With our app, you will be able to:
 
-   ```bash
-   npm install
-   ```
+- **Smooth access:** Get in and out of your parking lot with ease.
+- **Fast and secure payments:** Make your payments easily and securely, without having to worry about coins or cards.
+- **Shop for exclusive memberships:** Purchase memberships with just a few taps and enjoy special benefits.
 
-2. Start the app
+## 🔑 Key Features
 
-   ```bash
-    npx expo start
-   ```
+- **Instant Access:** Forget about physical cards and tickets. Your mobile is all you need.
+- **Stress-Free Payments:** Pay your ticket securely and quickly, from wherever you are.
+- **Memberships at your fingertips:** Purchase and manage your memberships easily, for a seamless parking experience.
 
-In the output, you'll find options to open the app in a
+## 🎯 Why Choose SmartPark?
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Give your routine a break and let SmartPark take care of the rest. With our app, your parking has never been easier. Less time searching and paying, more time enjoying. Download SmartPark and experience the convenience of modern parking!
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+> [!NOTE]\
+> This project is for educational purposes only. We are not responsible for its misuse. \
+> If you want to know more about this project, please visit: [Fabian Herrera - SmartPark App](https://fabianh.dev/projects/smartpark)\
+> \
+> Likewise, this project is licensed and inappropriate use will be reported. If you want to know more about the license, please visit: [🔑 LICENSE]()
