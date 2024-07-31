@@ -10,5 +10,6 @@ module.exports = {
     "react/prop-types": "off",
     "import/prefer-default-export": "off",
     "no-console": "warn",
+    "@typescript-eslint/ban-ts-comment": "off",
   },
 };
