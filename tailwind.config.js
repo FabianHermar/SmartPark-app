@@ -13,8 +13,10 @@ module.exports = {
       colors: {
         primary: "#367BFF",
         secondary: "#666666",
-        buttonGradient: "linear-gradient(90deg, #0F1B27 0%, #0B1521 35%, #050713 85%)",
-        spaceGradient: "linear-gradient(90deg, #FFFFFF 0%, #D0F4FF 100%)",
+      },
+      backgroundImage: {
+        'buttonGradient': "linear-gradient(90deg, #0F1B27 0%, #0B1521 35%, #050713 85%)",
+        'spaceGradient': "linear-gradient(90deg, #FFFFFF 0%, #D0F4FF 100%)",
       },
       fontFamily: {
         GilroyRegular: [ "GilroyRegular", "sans-serif" ],
