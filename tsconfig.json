@@ -3,8 +3,9 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["./*", "./assets/*"]
-    }
+			"@/*": ["./*", "./assets/*", "./components/*"],
+			"@/constants/*": ["./constants/*"]
+		}
   },
   "include": [
     "**/*.ts",
