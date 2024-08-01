@@ -1,4 +1,6 @@
 import Basement from "@/assets/images/basement.jpg";
+import BlueGradient2 from "@/assets/images/blue-gradient-2.png";
+import BlueGradient4 from "@/assets/images/blue-gradient-4.png";
 import BlueGradient6 from "@/assets/images/blue-gradient-6.png";
 import BlueGradient8 from "@/assets/images/blue-gradient-8.png";
 import BlueGradient from "@/assets/images/blue-gradient.png";
@@ -17,6 +19,8 @@ import SmartParkLogo from "@/assets/images/SmartPark-logo.png";
 export default {
   Basement,
   BlueGradient,
+  BlueGradient2,
+  BlueGradient4,
   BlueGradient6,
   BlueGradient8,
   CarIndex,
