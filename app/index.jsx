@@ -25,7 +25,7 @@ export default function Index () {
             <Text className='text-5xl font-GilroyBold pb-2'>SmartPark</Text>
             <Text className='text-base font-GilroyRegular'>Find and reserve parking in the nearest garages and parking lots.</Text>
           </View>
-          <View className='w-full px-4'>
+          <View className='w-full px-4 pt-10'>
             <DefaultButton
               title='Get Started'
               handlePress={() => router.push( '/sign-in' )}
