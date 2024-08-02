@@ -73,6 +73,11 @@ const SignIn = () => {
             <Text className='text-sm font-GilroyMedium text-secondary'>Don't have an account?{' '}</Text>
             <Link className='text-primary font-GilroyBold' href='/sign-up'>Sign Up</Link>
           </View>
+
+					<View className='flex justify-center items-center pt-4 gap-y-2'>
+						<Text className='text-secondary font-GilroyRegular text-center'>This link is only for testing the views of the other pages, remove it when necessary.</Text>
+						<Link className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1' href='/home'>Next page</Link>
+					</View>
         </View>
       </ScrollView>
     </SafeAreaView>
