@@ -6,8 +6,7 @@ const Pill = ( { title, handlePress, containerStyles, textStyles, isLoading } ) 
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      className={`bg-black/10 backdrop-blur px-4 py-2 w-20 justify-center rounded-full items-center ${containerStyles} ${isLoading ? 'opacity-50' : ''}`}
-      disabled={isLoading}
+			className={`bg-black/10 backdrop-blur px-4 py-2 w-20 justify-center rounded-full items-center ${containerStyles} ${isLoading ? 'opacity-50' : ''}`}
     >
       <View className='flex flex-row gap-0.5 items-center justify-center'>
         <Image
