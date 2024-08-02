@@ -36,10 +36,9 @@ const SignUp = () => {
           <View className='pb-6 flex flex-row justify-between items-center'>
             <Pill
               title='Back'
-              handlePress={() => router.back()}
+							handlePress={() => router.back( 'sign-in' )}
               containerStyles='w-16'
-              textStyles={undefined}
-              isLoading={undefined}
+							textStyles={undefined}
             />
           </View>
           <View className='w-full h-max mb-6 justify-start'>
@@ -113,6 +112,12 @@ const SignUp = () => {
             containerStyles='mt-7'
             isLoading={isSubmitting}
           />
+
+
+					<View className='flex justify-center items-center pt-4 gap-y-2'>
+						<Text className='text-secondary font-GilroyRegular text-center'>This link is only for testing the views of the other pages, remove it when necessary.</Text>
+						<Link className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1' href='/profile-setup'>Next page</Link>
+					</View>
 
           <View className='flex flex-row items-center justify-center mt-6'>
             <Text className='text-sm font-GilroyMedium text-secondary'>Already Signed?{' '}</Text>
