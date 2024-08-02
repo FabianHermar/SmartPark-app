@@ -15,6 +15,7 @@ import Logo from "@/assets/images/logo.png";
 import Membership from "@/assets/images/membership.jpg";
 import ProfileHeader from "@/assets/images/profile-header.jpg";
 import SmartParkLogo from "@/assets/images/SmartPark-logo.png";
+import UserPill from "@/assets/images/user-pill.png";
 
 export default {
   Basement,
@@ -28,6 +29,7 @@ export default {
   Floor1,
   Floor2,
   GradientIndex,
+	UserPill,
   Grainy,
   IndexImage,
   Logo,
