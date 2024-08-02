@@ -13,7 +13,8 @@ module.exports = {
       colors: {
         primary: "#367BFF",
         secondary: "#666666",
-        border: "#CECECE"
+				border: "#CECECE",
+				pill: '#3C3F46'
       },
       backgroundImage: {
         'buttonGradient': "linear-gradient(90deg, #0F1B27 0%, #0B1521 35%, #050713 85%)",
