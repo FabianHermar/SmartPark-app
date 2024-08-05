@@ -2,9 +2,10 @@ import DefaultButton from '@/components/DefaultButton'
 import FormField from '@/components/FormField'
 import Pill from '@/components/Pill'
 import { Images } from '@/constants'
+import { Image } from 'expo-image'
 import { router } from "expo-router"
 import React, { useState } from 'react'
-import { Image, ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const ForgotPassword = () => {
@@ -23,7 +24,7 @@ const ForgotPassword = () => {
       <ScrollView>
         <Image
           source={Images.BlueGradient4}
-          className='w-full h-full absolute -top-48 opacity-80 rotate-180 left-0'
+					className='w-full h-full absolute -top-56 opacity-80 rotate-180 left-0'
         />
         <View className='w-full justify-start h-full px-4 pt-10'>
           <View className='pb-6 flex flex-row justify-between items-center'>
