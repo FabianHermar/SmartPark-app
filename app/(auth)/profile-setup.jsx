@@ -1,8 +1,9 @@
 import DefaultButton from '@/components/DefaultButton'
 import { BlueIcons, Images } from '@/constants'
+import { Image } from 'expo-image'
 import { router } from 'expo-router'
 import React from 'react'
-import { Image, ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import ConfettiCannon from 'react-native-confetti-cannon'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
