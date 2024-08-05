@@ -1,6 +1,7 @@
 import { Icons } from '@/constants'
+import { Image } from 'expo-image'
 import { Tabs } from 'expo-router'
-import { Image, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 
 const TabIcon = ( { icon, color, name, focused } ) => {
 	return (
@@ -87,7 +88,7 @@ const TabsLayout = () => {
 						title: 'Profile',
 						tabBarIcon: ( { color, focused } ) => (
 							<TabIcon
-								icon={Icons.Person}
+								icon={Icons.Profile}
 								color={color}
 								name='Profile'
 								focused={focused}
