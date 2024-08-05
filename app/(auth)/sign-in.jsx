@@ -2,9 +2,10 @@ import DefaultButton from '@/components/DefaultButton'
 import FormField from '@/components/FormField'
 import Pill from '@/components/Pill'
 import { Images } from '@/constants'
+import { Image } from 'expo-image'
 import { Link, router } from "expo-router"
 import React, { useState } from 'react'
-import { Image, ScrollView, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { ScrollView, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const SignIn = () => {
