@@ -11,7 +11,7 @@ const ParkingPlace = () => {
 			<ScrollView>
 				<Image
 					source={Images.BlueGradient2}
-					className='w-full h-full absolute -top-48 opacity-80  left-0'
+					className='w-full h-full absolute -top-48 opacity-70  left-0'
 				/>
 				<View className='w-full justify-start h-full px-4 pt-10'>
 					<View className='pb-6 flex flex-row justify-between items-center'>
