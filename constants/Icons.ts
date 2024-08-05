@@ -1,65 +1,61 @@
-import Accessible from '@/assets/icons/accessible.png';
-import Bell from '@/assets/icons/bell.png';
+import Accessible from '@/assets/icons/accessible.svg';
+import Bell from '@/assets/icons/bell.svg';
 import Bicycle from '@/assets/icons/bicycle.svg';
 import Car from '@/assets/icons/car.svg';
-import Check from '@/assets/icons/check.png';
-import Crown from '@/assets/icons/crown.png';
-import Diamond from '@/assets/icons/diamond.png';
-import EyeOff from '@/assets/icons/eye-off.png';
-import Eye from '@/assets/icons/eye.png';
-import GrayBell from '@/assets/icons/gray-bell.png';
-import Headset from '@/assets/icons/headset.png';
-import Home from '@/assets/icons/home.png';
-import Info from '@/assets/icons/info.png';
-import Left from '@/assets/icons/left.png';
-import LifeBuoy from '@/assets/icons/life-buoy.png';
-import Map from '@/assets/icons/map.png';
+import Check from '@/assets/icons/check.svg';
+import Diamond from '@/assets/icons/diamond.svg';
+import Down from '@/assets/icons/down.svg';
+import EyeOff from '@/assets/icons/eye-off.svg';
+import Eye from '@/assets/icons/eye.svg';
+import GrayBell from '@/assets/icons/gray-bell.svg';
+import GrayCrown from '@/assets/icons/gray-crown.svg';
+import GrayPin from '@/assets/icons/gray-pin.svg';
+import Home from '@/assets/icons/home.svg';
+import Info from '@/assets/icons/info.svg';
+import Left from '@/assets/icons/left.svg';
+import LifeBuoy from '@/assets/icons/life-buoy.svg';
+import Map from '@/assets/icons/map.svg';
 import Motorcycle from '@/assets/icons/motorcycle.svg';
-import Padlock from '@/assets/icons/padlock.png';
-import Parking from '@/assets/icons/parking.png';
-import Pencil from '@/assets/icons/pencil.png';
-import Person from '@/assets/icons/person.png';
-import Pin from '@/assets/icons/pin.png';
-import Right from '@/assets/icons/right.png';
-import Search from '@/assets/icons/search.png';
-import Settings from '@/assets/icons/settings.png';
-import Shield from '@/assets/icons/shield.png';
-import Sparkles from '@/assets/icons/sparkles.png';
+import Padlock from '@/assets/icons/padlock.svg';
+import Payment from '@/assets/icons/payment.svg';
+import Pencil from '@/assets/icons/pencil.svg';
+import Pin from '@/assets/icons/pin.svg';
+import Profile from '@/assets/icons/profile.svg';
+import Right from '@/assets/icons/right.svg';
+import Search from '@/assets/icons/search.svg';
+import Settings from '@/assets/icons/settings.svg';
+import Tickets from '@/assets/icons/tickets.svg';
 import Truck from '@/assets/icons/truck.svg';
-import User from '@/assets/icons/user.png';
-import Valet from '@/assets/icons/valet.png';
-import Verified from '@/assets/icons/verified.png';
+import Verified from '@/assets/icons/verified.svg';
 
 export default {
+	Accessible,
+	Bell,
 	Bicycle,
 	Car,
+	Check,
+	Diamond,
+	Down,
+	Eye,
+	EyeOff,
 	GrayBell,
+	GrayCrown,
+	GrayPin,
+	Home,
+	Info,
+	Left,
+	LifeBuoy,
+	Map,
 	Motorcycle,
+	Padlock,
+	Payment,
+	Pencil,
+	Pin,
+	Profile,
+	Right,
+	Search,
+	Settings,
+	Tickets,
 	Truck,
-  Accessible,
-  Bell,
-  Check,
-  Crown,
-  Diamond,
-  Eye,
-  EyeOff,
-  Headset,
-  Home,
-  Info,
-  Left,
-  LifeBuoy,
-  Map,
-  Padlock,
-  Parking,
-  Pencil,
-  Person,
-  Pin,
-  Right,
-  Search,
-  Settings,
-  Shield,
-  Sparkles,
-  User,
-  Valet,
-  Verified
+	Verified,
 }
