@@ -1,5 +1,6 @@
 import { Icons } from '@/constants'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Image } from 'expo-image'
+import { Text, TouchableOpacity, View } from 'react-native'
 
 const Pill = ( { title, handlePress, containerStyles, textStyles, isLoading } ) => {
   return (
