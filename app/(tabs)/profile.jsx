@@ -72,6 +72,12 @@ const UserProfile = () => {
 								</Text>
 							</TouchableOpacity>
 						</View>
+						<View>
+							<Text className='text-3xl font-GilroySemibold px-4 pt-6'>Last Activity</Text>
+							<View className='h-full'>
+								{/* Here you need to show the recent activity */}
+							</View>
+						</View>
 					</View>
 				</View>
 			</ScrollView>
