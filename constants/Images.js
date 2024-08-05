@@ -12,6 +12,7 @@ import GradientIndex from "@/assets/images/gradient-index.png";
 import Grainy from "@/assets/images/grainy.png";
 import IndexImage from "@/assets/images/index-image.png";
 import Logo from "@/assets/images/logo.png";
+import Map from "@/assets/images/map.png";
 import Membership from "@/assets/images/membership.jpg";
 import ProfileHeader from "@/assets/images/profile-header.jpg";
 import SmartParkLogo from "@/assets/images/SmartPark-logo.png";
@@ -36,4 +37,5 @@ export default {
   Membership,
   ProfileHeader,
   SmartParkLogo,
+	Map,
 }
