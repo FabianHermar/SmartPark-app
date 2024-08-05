@@ -1,20 +1,18 @@
-import Basement from "@/assets/images/basement.jpg";
-import BlueGradient2 from "@/assets/images/blue-gradient-2.png";
-import BlueGradient4 from "@/assets/images/blue-gradient-4.png";
-import BlueGradient6 from "@/assets/images/blue-gradient-6.png";
-import BlueGradient8 from "@/assets/images/blue-gradient-8.png";
-import BlueGradient from "@/assets/images/blue-gradient.png";
-import CarIndex from "@/assets/images/car-index.png";
-import CarLot from "@/assets/images/CarLot.png";
-import Floor1 from "@/assets/images/floor1.jpg";
-import Floor2 from "@/assets/images/floor2.jpg";
-import GradientIndex from "@/assets/images/gradient-index.png";
-import Grainy from "@/assets/images/grainy.png";
-import IndexImage from "@/assets/images/index-image.png";
+import Basement from "@/assets/images/basement.webp";
+import BlueGradient2 from "@/assets/images/blue-gradient-2.webp";
+import BlueGradient4 from "@/assets/images/blue-gradient-4.webp";
+import BlueGradient6 from "@/assets/images/blue-gradient-6.webp";
+import BlueGradient8 from "@/assets/images/blue-gradient-8.webp";
+import BlueGradient from "@/assets/images/blue-gradient.webp";
+import CarLot from "@/assets/images/CarLot.webp";
+import Floor1 from "@/assets/images/floor1.webp";
+import Floor2 from "@/assets/images/floor2.webp";
+import Grainy from "@/assets/images/grainy.webp";
+import IndexImage from "@/assets/images/index-image.webp";
 import Logo from "@/assets/images/logo.png";
-import Map from "@/assets/images/map.png";
-import Membership from "@/assets/images/membership.jpg";
-import ProfileHeader from "@/assets/images/profile-header.jpg";
+import Map from "@/assets/images/map.webp";
+import Membership from "@/assets/images/membership.webp";
+import ProfileHeader from "@/assets/images/profile-header.webp";
 import SmartParkLogo from "@/assets/images/SmartPark-logo.png";
 import UserPill from "@/assets/images/user-pill.png";
 
@@ -24,12 +22,10 @@ export default {
   BlueGradient2,
   BlueGradient4,
   BlueGradient6,
-  BlueGradient8,
-  CarIndex,
+	BlueGradient8,
   CarLot,
   Floor1,
-  Floor2,
-  GradientIndex,
+	Floor2,
 	UserPill,
   Grainy,
   IndexImage,
