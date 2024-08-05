@@ -3,8 +3,7 @@ module.exports = {
   extends: [ "expo", "prettier" ],
   plugins: [ "prettier" ],
   rules: {
-    'prettier/prettier': 'off',
-    'no-unused-vars': 'on',
+		'prettier/prettier': 'off',
     "react/jsx-filename-extension": [ 1, { extensions: [ ".js", ".jsx" ] } ],
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
