@@ -45,7 +45,7 @@ const UserProfile = () => {
 						</View>
 					</View>
 					<View>
-						<View className='flex flex-row justify-between items-center px-4 pt-11'>
+						<View className='flex flex-row justify-between items-center px-4 pt-8'>
 							<TouchableOpacity className='flex flex-col items-center gap-x-1 bg-[#E5E5E5] w-24 h-20 rounded-xl justify-center shadow' activeOpacity={0.6}>
 								<Image
 									source={Icons.Tickets}
