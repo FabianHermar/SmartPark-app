@@ -3,9 +3,10 @@ import FormField from '@/components/FormField'
 import Pill from '@/components/Pill'
 import { Images } from '@/constants'
 import Checkbox from 'expo-checkbox'
+import { Image } from 'expo-image'
 import { Link, router } from "expo-router"
 import { useState } from 'react'
-import { Image, ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const SignUp = () => {
