@@ -1,3 +1,4 @@
+import AdditionalContent from "@/components/AdditionalContent";
 import CategoryCard from "@/components/CategoryCard";
 import { Icons, Images } from "@/constants";
 import { Image } from 'expo-image';
@@ -8,6 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function UserIndex () {
 	const [ selectedCheckbox, setSelectedCheckbox ] = useState( null )
+	const [ isVisible, setIsVisible ] = useState( false )
 
 	const checkboxes = [
 		{ id: 1, text: 'Car', image: Icons.Car },
@@ -18,9 +20,11 @@ export default function UserIndex () {
 
 	const handlePress = ( id ) => {
 		if ( selectedCheckbox === id ) {
-			setSelectedCheckbox( null )
+			setIsVisible( false )
+			setTimeout( () => setSelectedCheckbox( null ), 500 )
 		} else {
 			setSelectedCheckbox( id )
+			setIsVisible( true )
 		}
 	};
 
@@ -80,47 +84,24 @@ export default function UserIndex () {
 									key={checkbox.id}
 									text={checkbox.text}
 									imageSource={checkbox.image}
-									additionalContent={null}
 									checked={selectedCheckbox === checkbox.id}
 									onPress={() => handlePress( checkbox.id )}
+									disabled={selectedCheckbox !== null && selectedCheckbox !== checkbox.id}
 								/>
 							) )}
 						</View>
 					</View>
 				</View>
-				<View className='px-4 mt-10'>
-					<Text className='text-2xl font-GilroySemibold'>Most popular car parks</Text>
-					<View className='flex flex-row gap-x-4 mt-4'>
-						<TouchableOpacity
-							onPress={() => router.push( 'parking' )}
-							activeOpacity={0.7}
-							className='w-[150px] h-[150px] bg-[#EFEFEF] rounded-lg shadow-sm'
-						>
-							<Image
-								source={Images.Parking1}
-								className='w-full h-3/4 rounded-t-lg'
-							/>
-							<View className='px-4 pt-4'>
-								<Text className='font-GilroySemibold text-black text-lg'>Parking 1</Text>
-								<Text className='font-GilroyRegular text-secondary text-base'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-							</View>
-						</TouchableOpacity>
-						<TouchableOpacity
-							onPress={() => router.push( 'parking' )}
-							activeOpacity={0.7}
-							className='w-[150px] h-[150px] bg-[#EFEFEF] rounded-lg shadow-sm'
-						>
-							<Image
-								source={Images.Parking2}
-								className='w-full h-3/4 rounded-t-lg'
-							/>
-							<View className='px-4 pt-4'>
-								<Text className='font-GilroySemibold text-black text-lg'>Parking 2</Text>
-								<Text className='font-GilroyRegular text-secondary text-base'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
-							</View>
-						</TouchableOpacity>
-					</View>
-				</View>
+				{selectedCheckbox !== null && (
+					<AdditionalContent
+						isVisible={isVisible}
+						onAnimationEnd={() => {
+							if ( !isVisible ) {
+								setSelectedCheckbox( null )
+							}
+						}}
+					/>
+				)}
 			</ScrollView>
 		</SafeAreaView>
 	)
