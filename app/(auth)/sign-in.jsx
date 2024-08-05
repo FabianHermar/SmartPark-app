@@ -43,7 +43,7 @@ const SignIn = () => {
           <View className='w-full h-max mb-6 justify-start'>
             <Image
               source={Images.SmartParkLogo}
-              resizeMode='contain'
+							contentFit='contain'
               className='w-48 w- h-20'
             />
             <Text className='text-2xl font-GilroyBold'>Sign In to your account</Text>
