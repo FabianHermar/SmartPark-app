@@ -45,7 +45,7 @@ const SignUp = () => {
           <View className='w-full h-max mb-6 justify-start'>
             <Image
               source={Images.SmartParkLogo}
-              resizeMode='contain'
+							ContentFit='contain'
               className='w-48 h-20'
             />
             <Text className='text-2xl font-GilroyBold'>Let's Get Started</Text>
