@@ -7,6 +7,9 @@ import BlueGradient from "@/assets/images/blue-gradient.webp";
 import CarLot from "@/assets/images/CarLot.webp";
 import Floor1 from "@/assets/images/floor1.webp";
 import Floor2 from "@/assets/images/floor2.webp";
+import Glass1 from "@/assets/images/glass-1.webp";
+import Glass2 from "@/assets/images/glass-2.webp";
+import Glass3 from "@/assets/images/glass-3.webp";
 import Grainy from "@/assets/images/grainy.webp";
 import IndexImage from "@/assets/images/index-image.webp";
 import Logo from "@/assets/images/logo.png";
@@ -34,4 +37,7 @@ export default {
   ProfileHeader,
   SmartParkLogo,
 	Map,
+	Glass1,
+	Glass2,
+	Glass3,
 }
