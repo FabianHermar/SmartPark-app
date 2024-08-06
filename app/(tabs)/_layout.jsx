@@ -8,7 +8,7 @@ const TabIcon = ( { icon, color, name, focused } ) => {
 		<View className='flex items-center justify-center flex-col gap-0.5'>
 			<Image
 				source={icon}
-				resizeMode='contain'
+				contentFit='contain'
 				tintColor={color}
 				className='w-6 h-6'
 			/>
