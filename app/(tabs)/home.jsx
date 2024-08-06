@@ -3,6 +3,7 @@ import CategoryCard from "@/components/CategoryCard";
 import { Icons, Images } from "@/constants";
 import { Image } from 'expo-image';
 import { router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -103,6 +104,7 @@ export default function UserIndex () {
 					/>
 				)}
 			</ScrollView>
+			<StatusBar backgroundColor="light" style='dark' />
 		</SafeAreaView>
 	)
 }
