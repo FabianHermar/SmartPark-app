@@ -1,4 +1,4 @@
-import GradientButton from '@/components/GradientButton';
+import DefaultButton from '@/components/DefaultButton';
 import { Images } from '@/constants';
 import { BlurView } from 'expo-blur';
 import { Image } from 'expo-image';
@@ -40,19 +40,20 @@ const Membership = () => {
 						</View>
 					</View>
 				<LinearGradient
-					colors={[ '#0F1B27', '#0B1521', '#050713' ]}
+						colors={[ '#000', '#0F4F75' ]}
 					start={[ 0, 0 ]}
-					end={[ 1, 1 ]}
-						className='w-full h-72 items-start justify-start rounded-tl-[65px] mt-4 bottom-0'
+						end={[ 1, 0 ]}
+						className='w-full h-[270px] items-start justify-start rounded-tl-[65px] mt-4 bottom-0'
 				>
-						<Text className='text-white font-GilroyBold text-4xl pt-10 pl-6'>Become a member +</Text>
+						<Text className='text-white font-GilroyBold text-4xl pt-6 pl-6'>Become a member +</Text>
 						<Text className='px-6 text-secondary font-GilroyRegular text-base'>Access secure and convenient parking with our monthly membership. Enjoy guaranteed parking in premium locations, with 24/7 surveillance.</Text>
 				</LinearGradient>
 					<View className='px-4'>
-						<GradientButton
-							title='Join now'
+						<DefaultButton
+							title='More Information'
 							containerStyles='absolute bottom-6 left-5 mt-4'
 							handlePress={() => router.push( 'membership-benefits' )}
+							textStyles='text-xl'
 						/>
 					</View>
 				</ImageBackground>
