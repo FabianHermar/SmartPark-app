@@ -1,66 +1,52 @@
-import { BlueIcons } from '@/constants'
+import { BlueIcons } from '@/constants';
 
 interface Benefit {
-	title: string
-	icon: string
-	benefits: string[]
+	title: string;
+	icon: string;
+	benefits: string[];
 }
 
-export const Benefits: Benefit[] = [
+const benefits: Benefit[] = [
 	{
 		title: 'Unlimited Parking',
 		icon: BlueIcons.Parking,
-		benefits: [
-
-		]
+		benefits: []
 	},
 	{
 		title: 'Reserved Spaces',
 		icon: BlueIcons.Verified,
-		benefits: [
-
-		]
+		benefits: []
 	},
 	{
 		title: 'Priority Access',
 		icon: BlueIcons.Crown,
-		benefits: [
-
-		]
+		benefits: []
 	},
 	{
 		title: 'Valet Service',
 		icon: BlueIcons.Valet,
-		benefits: [
-
-		]
+		benefits: []
 	},
 	{
 		title: 'Enhanced Security and Surveillance',
 		icon: BlueIcons.Security,
-		benefits: [
-
-		]
+		benefits: []
 	},
 	{
 		title: 'Discounts and Promotions',
 		icon: BlueIcons.Discount,
-		benefits: [
-
-		]
+		benefits: []
 	},
 	{
 		title: 'Access to Special Areas',
 		icon: BlueIcons.Stars,
-		benefits: [
-
-		]
+		benefits: []
 	},
 	{
 		title: 'Dedicated Customer Support',
 		icon: BlueIcons.Customers,
-		benefits: [
-
-		]
+		benefits: []
 	}
-]
+];
+
+export default benefits;
