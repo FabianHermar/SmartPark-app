@@ -42,6 +42,10 @@ export default function RootLayout () {
 				name="(parking-place)"
 				options={{ headerShown: false }}
 			/>
+			<Stack.Screen
+				name="(membership-pages)"
+				options={{ headerShown: false }}
+			/>
     </Stack>
   )
 }
