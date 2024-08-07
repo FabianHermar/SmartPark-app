@@ -2,7 +2,7 @@ import { Icons } from '@/constants'
 import { Image } from 'expo-image'
 import { Text, TouchableOpacity, View } from 'react-native'
 
-const Pill = ( { title, handlePress, containerStyles, textStyles, isLoading } ) => {
+const Pill = ( { title, handlePress, containerStyles, textStyles, isLoading, iconColor } ) => {
   return (
     <TouchableOpacity
       onPress={handlePress}
@@ -13,6 +13,7 @@ const Pill = ( { title, handlePress, containerStyles, textStyles, isLoading } ) 
         <Image
           source={Icons.Left}
           className='w-4 h-4 text-secondary'
+					tintColor={iconColor}
         />
         <Text className={`text-secondary font-GilroySemibold text-xs ${textStyles}`}>{title}</Text>
       </View>
