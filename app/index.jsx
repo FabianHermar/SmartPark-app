@@ -1,10 +1,10 @@
-import { Image, ScrollView, Text, View } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
-
 import DefaultButton from "@/components/DefaultButton"
 import { Images } from "@/constants"
+import { Image } from "expo-image"
 import { router } from "expo-router"
 import { StatusBar } from "expo-status-bar"
+import { ScrollView, Text, View } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 export default function Index () {
   return (
@@ -14,13 +14,13 @@ export default function Index () {
           <Image
             source={Images.IndexImage}
             className='w-full h-96 relative'
-            resizeMode='contain'
+						contentFit='contain'
           />
           <View className='px-4'>
             <Image
               source={Images.Logo}
               className='w-28 h-28'
-              resizeMode='contain'
+							contentFit='contain'
             />
             <Text className='text-5xl font-GilroyBold pb-2'>SmartPark</Text>
             <Text className='text-base font-GilroyRegular'>Find and reserve parking in the nearest garages and parking lots.</Text>
