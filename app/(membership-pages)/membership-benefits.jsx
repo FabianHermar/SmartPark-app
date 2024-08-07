@@ -1,6 +1,7 @@
 import DefaultButton from '@/components/DefaultButton'
 import Pill from '@/components/Pill'
-import { Images } from '@/constants'
+import { Icons, Images } from '@/constants'
+import benefits from '@/lib/benefits'
 import { BlurView } from 'expo-blur'
 import { Image } from 'expo-image'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -51,6 +52,7 @@ const MembershipBenefits = () => {
 						title='Join Now'
 						containerStyles='mt-6 border-2 border-white/10'
 						textStyles='text-xl'
+						handlePress={() => router.push( 'membership-info' )}
 					/>
 					<View className='flex flex-row items-center justify-between pt-6'>
 						<View className='border-2 border-neutral-400 w-24 rounded-lg h-0.5' />
@@ -58,8 +60,18 @@ const MembershipBenefits = () => {
 						<View className='border-2 border-neutral-400 w-24 rounded-lg h-0.5' />
 					</View>
 					<Text className='font-GilroyRegular text-neutral-400 text-xs text-center'>Click on each of the benefits to see more information.</Text>
-					<View>
-
+					<View className='py-4'>
+						{benefits.map( ( benefit, index ) => (
+							<View key={index} className='px-4 pt-6 flex flex-row gap-x-2 items-center'>
+								<Image source={benefit.icon} className='w-6 h-6' />
+								<Text className='font-GilroyMedium text-base text-white'>{benefit.title}</Text>
+								<Image
+									source={Icons.Down}
+									className='w-4 h-4'
+									tintColor='#FFF'
+								/>
+							</View>
+						) )}
 					</View>
 				</View>
 			</ScrollView>
