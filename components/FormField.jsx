@@ -3,12 +3,12 @@ import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 import { Icons } from '@/constants'
 
-const FormField = ( { title, value, placeholder, handleChangeText, otherStyles, ...props } ) => {
+const FormField = ( { title, value, placeholder, handleChangeText, otherStyles, textStyles, ...props } ) => {
 
   const [ showPassword, setShowPassword ] = useState( false )
   return (
     <View className={`space-y-2 ${otherStyles}`}>
-      <Text className='text-base font-GilroySemibold'>{title}</Text>
+			<Text className={`text-base font-GilroySemibold ${textStyles}`}>{title}</Text>
       <View className='w-full h-14 px-4 bg-white/10 backdrop-blur border-2 border-border rounded-xl items-center focus:border-primary flex-row justify-around'>
         <TextInput
           value={value}
