@@ -1,7 +1,7 @@
 import { Image, ScrollView, Text, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import DefaultButton from "@/components/GradientButton"
+import DefaultButton from "@/components/DefaultButton"
 import { Images } from "@/constants"
 import { router } from "expo-router"
 import { StatusBar } from "expo-status-bar"
