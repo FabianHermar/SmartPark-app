@@ -8,12 +8,12 @@ const GradientButton = ( { title, handlePress, containerStyles, textStyles } ) =
     <TouchableOpacity
       onPress={handlePress}
 			activeOpacity={0.6}
-			className={`rounded-xl min-h-[70px] w-full justify-center items-center border-2 border-white/10 ${containerStyles}`}
+			className={`rounded-xl min-h-[70px] w-full justify-center items-center border-2 border-white/5 ${containerStyles}`}
 		>
 			<LinearGradient
-				colors={[ '#0F1B27', '#0B1521', '#050713' ]}
+				colors={[ '#0F4F75', '#03253E' ]}
 				start={[ 0, 0 ]}
-				end={[ 1, 1 ]}
+				end={[ 0, 1 ]}
 				className='w-full min-h-[70px] items-center justify-center rounded-xl flex flex-row'
 			>
 				<Text className={`text-white font-GilroySemibold text-xl ${textStyles}`}>{title}</Text>
