@@ -26,7 +26,7 @@ const MembershipPagesLayout = () => {
 					options={{ headerShown: false }}
 				/>
 			</Stack>
-			<StatusBar backgroundColor="white" style='dark' />
+			<StatusBar backgroundColor="white" style='light' />
 		</>
 	)
 }
