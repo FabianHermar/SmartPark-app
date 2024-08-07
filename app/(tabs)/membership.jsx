@@ -27,7 +27,7 @@ const Membership = () => {
 					contentFit='cover'
 				/>
 				<ImageBackground source={Images.Membership} style={styles.image}>
-					<View className='w-full justify-start pt-10'>
+					<View className='w-full justify-start py-64 pt-10'>
 						<View className='items-center justify-center pt-10'>
 							<BlurView style={{ borderRadius: 20, overflow: 'hidden' }} className='bg-[#111111]/60 w-56 items-center justify-center' intensity={20}>
 								<Image
