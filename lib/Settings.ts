@@ -5,7 +5,7 @@ interface Setting {
 	icon: string
 }
 
-export const Settings: Setting[] = [
+const settings: Setting[] = [
 	{
 		title: 'Account and Profile',
 		icon: Icons.Profile
@@ -31,3 +31,5 @@ export const Settings: Setting[] = [
 		icon: Icons.Info
 	}
 ]
+
+export default settings
