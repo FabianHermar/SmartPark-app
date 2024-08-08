@@ -40,11 +40,12 @@ const PaymentMethod = () => {
 						<View className='py-4'>
 							<View className='flex flex-row items-center justify-between'>
 								<View className='flex flex-row items-center'>
-									<View className='w-20 h-14 bg-neutral-100 rounded-xl flex items-center justify-center'>
+									<View className='w-20 h-14 bg-[#1434CB] rounded-xl flex items-center justify-center'>
 										<Image
 											source={Payments.Visa}
 											className='w-12 h-10'
 											contentFit='contain'
+											tintColor='#FFF'
 										/>
 									</View>
 									<View>
@@ -64,7 +65,7 @@ const PaymentMethod = () => {
 						<View className='py-4'>
 							<View className='flex flex-row items-center justify-between'>
 								<View className='flex flex-row items-center'>
-									<View className='w-20 h-14 bg-neutral-100 rounded-xl flex items-center justify-center'>
+									<View className='w-20 h-14 bg-neutral-800 rounded-xl flex items-center justify-center'>
 										<Image
 											source={Payments.MasterCard}
 											className='w-12 h-10'
@@ -88,11 +89,12 @@ const PaymentMethod = () => {
 						<View className='py-4'>
 							<View className='flex flex-row items-center justify-between'>
 								<View className='flex flex-row items-center'>
-									<View className='w-20 h-14 bg-neutral-100 rounded-xl flex items-center justify-center'>
+									<View className='w-20 h-14 bg-[#6772E5] rounded-xl flex items-center justify-center'>
 										<Image
 											source={Payments.Stripe}
 											className='w-12 h-8'
 											contentFit='contain'
+											tintColor='#FFF'
 										/>
 									</View>
 									<Text className='text-white font-GilroyBold text-xl pl-4'>
