@@ -3,7 +3,7 @@ import Pill from '@/components/Pill'
 import { Payments } from '@/constants'
 import { Image } from 'expo-image'
 import { LinearGradient } from 'expo-linear-gradient'
-import { router } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -40,16 +40,21 @@ const PaymentMethod = () => {
 						<View className='py-4'>
 							<View className='flex flex-row items-center justify-between'>
 								<View className='flex flex-row items-center'>
-									<View className='w-20 h-14 bg-white rounded-xl flex items-center justify-center'>
+									<View className='w-20 h-14 bg-neutral-100 rounded-xl flex items-center justify-center'>
 										<Image
 											source={Payments.Visa}
 											className='w-12 h-10'
 											contentFit='contain'
 										/>
 									</View>
-									<Text className='text-white font-GilroyBold text-lg pl-4'>
-										Visa
-									</Text>
+									<View>
+										<Text className='text-white font-GilroyBold text-xl pl-4'>
+											Visa
+										</Text>
+										<Text className='text-neutral-400 font-GilroyRegular text-base pl-4'>
+											**** **** **** 1234
+										</Text>
+									</View>
 								</View>
 								<View className='w-6 h-6 bg-white rounded-full flex items-center justify-center'>
 									<Image source={undefined} className='w-4 h-4' />
@@ -59,16 +64,21 @@ const PaymentMethod = () => {
 						<View className='py-4'>
 							<View className='flex flex-row items-center justify-between'>
 								<View className='flex flex-row items-center'>
-									<View className='w-20 h-14 bg-white rounded-xl flex items-center justify-center'>
+									<View className='w-20 h-14 bg-neutral-100 rounded-xl flex items-center justify-center'>
 										<Image
 											source={Payments.MasterCard}
 											className='w-12 h-10'
 											contentFit='contain'
 										/>
 									</View>
-									<Text className='text-white font-GilroyBold text-lg pl-4'>
-										MasterCard
-									</Text>
+									<View>
+										<Text className='text-white font-GilroyBold text-xl pl-4'>
+											MasterCard
+										</Text>
+										<Text className='text-neutral-400 font-GilroyRegular text-base pl-4'>
+											**** **** **** 1234
+										</Text>
+									</View>
 								</View>
 								<View className='w-6 h-6 bg-white rounded-full flex items-center justify-center'>
 									<Image source={undefined} className='w-4 h-4' />
@@ -78,14 +88,14 @@ const PaymentMethod = () => {
 						<View className='py-4'>
 							<View className='flex flex-row items-center justify-between'>
 								<View className='flex flex-row items-center'>
-									<View className='w-20 h-14 bg-white rounded-xl flex items-center justify-center'>
+									<View className='w-20 h-14 bg-neutral-100 rounded-xl flex items-center justify-center'>
 										<Image
 											source={Payments.Stripe}
 											className='w-12 h-8'
 											contentFit='contain'
 										/>
 									</View>
-									<Text className='text-white font-GilroyBold text-lg pl-4'>
+									<Text className='text-white font-GilroyBold text-xl pl-4'>
 										Stripe
 									</Text>
 								</View>
@@ -97,16 +107,21 @@ const PaymentMethod = () => {
 						<View className='py-4'>
 							<View className='flex flex-row items-center justify-between'>
 								<View className='flex flex-row items-center'>
-									<View className='w-20 h-14 bg-white rounded-xl flex items-center justify-center'>
+									<View className='w-20 h-14 bg-neutral-100 rounded-xl flex items-center justify-center'>
 										<Image
 											source={Payments.PayPal}
 											className='w-12 h-8'
 											contentFit='contain'
 										/>
 									</View>
-									<Text className='text-white font-GilroyBold text-lg pl-4'>
-										PayPal
-									</Text>
+									<View>
+										<Text className='text-white font-GilroyBold text-xl pl-4'>
+											PayPal
+										</Text>
+										<Text className='text-neutral-400 font-GilroyRegular text-xs pl-4'>
+											Vinculed to johndoe@example.com
+										</Text>
+									</View>
 								</View>
 								<View className='w-6 h-6 bg-white rounded-full flex items-center justify-center'>
 									<Image source={undefined} className='w-4 h-4' />
@@ -116,10 +131,22 @@ const PaymentMethod = () => {
 					</View>
 					<DefaultButton
 						title='Continue'
-						handlePress={() => router.push('vehicle-info')}
+						handlePress={() => undefined}
 						containerStyles='mt-7'
 						isLoading={undefined}
 					/>
+					<View className='flex justify-center items-center pt-4 gap-y-2'>
+						<Text className='text-secondary font-GilroyRegular text-center'>
+							This link is only for testing the views of the other pages, remove
+							it when necessary.
+						</Text>
+						<Link
+							className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1'
+							href='/membership-active'
+						>
+							Next page
+						</Link>
+					</View>
 				</View>
 			</ScrollView>
 		</SafeAreaView>
