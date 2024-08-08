@@ -17,8 +17,6 @@ const MembershipInfo = () => {
 		password: ''
 	} )
 
-	const [ isSubmitting, setIsSubmitting ] = useState( false )
-
 	return (
 		<SafeAreaView className='bg-white h-full'>
 			<LinearGradient
@@ -38,7 +36,7 @@ const MembershipInfo = () => {
 							iconColor='#FFF'
 						/>
 					</View>
-					<View>
+					<View className='py-4'>
 						<Text className='text-white font-GilroyBold text-4xl'>Member's Info</Text>
 						<Text className='text-neutral-400 font-GilroyRegular pt-2 text-base'>Please make sure your information is correct before registering.</Text>
 					</View>
