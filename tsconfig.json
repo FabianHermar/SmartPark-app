@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "app/(search)/QRScanner.", "app/(parking-place)/QRScanner.tsx", "app/(parking-place)/scan-qr.tsx"  ]
 }
