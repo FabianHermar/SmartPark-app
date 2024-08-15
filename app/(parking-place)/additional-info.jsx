@@ -23,8 +23,6 @@ const AdditionalInfo = () => {
 
 					</View>
 
-					
-
 					<DefaultButton
 						title='Back to Home'
 						handlePress={() => router.replace( 'home' )}
