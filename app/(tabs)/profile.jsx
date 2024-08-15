@@ -1,9 +1,12 @@
+import React from 'react';
 import { Icons, Images } from '@/constants';
 import { Image } from 'expo-image';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 const UserProfile = () => {
+	const navigation = useNavigation();
 	return (
 		<SafeAreaView className='bg-white h-full'>
 			<ScrollView>
@@ -46,14 +49,22 @@ const UserProfile = () => {
 					</View>
 					<View>
 						<View className='flex flex-row justify-between items-center px-4 pt-8'>
-							<TouchableOpacity className='flex flex-col items-center gap-x-1 bg-[#E5E5E5] w-24 h-20 rounded-xl justify-center shadow' activeOpacity={0.6}>
+							<TouchableOpacity 
+							className='flex flex-col items-center gap-x-1 bg-[#E5E5E5] w-24 h-20 rounded-xl justify-center shadow' 
+							activeOpacity={0.6}
+							onPress={() => navigation.navigate('QRScanner')}
+							>
 								<Image
 									source={Icons.Tickets}
 									className="w-7 h-7"
 								/>
 								<Text className='font-GilroyMedium text-sm'>Tickets</Text>
 							</TouchableOpacity>
-							<TouchableOpacity className='flex flex-col items-center gap-x-1 bg-[#E5E5E5] w-24 h-20 rounded-xl justify-center shadow' activeOpacity={0.6}>
+							<TouchableOpacity 
+							className='flex flex-col items-center gap-x-1 bg-[#E5E5E5] w-24 h-20 rounded-xl justify-center shadow' 
+							activeOpacity={0.6}
+							onPress={() => navigation.navigate('QRScanner')}
+							>
 								<Image
 									source={Icons.Payment}
 									className="w-7 h-7"
