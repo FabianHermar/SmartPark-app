@@ -8,7 +8,7 @@ import { Link, router } from 'expo-router'
 import { useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { USER_BASE_URL } from '../../constants/apiUrl'
+import { USER_BASE_URL } from '../../constants/apiUrls'
 
 const SignUp = () => {
 	const [form, setForm] = useState({

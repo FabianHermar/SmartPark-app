@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 import { ScrollView, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { USER_BASE_URL } from '../../constants/apiUrl'
+import { USER_BASE_URL } from '../../constants/apiUrls'
 
 const SignIn = () => {
 	const [form, setForm] = useState({
