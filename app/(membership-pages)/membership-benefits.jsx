@@ -10,73 +10,101 @@ import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const MembershipBenefits = () => {
-	return (
-		<SafeAreaView className='bg-white h-full'>
-			<LinearGradient
-				colors={[ '#000', '#0F4F75' ]}
-				start={[ 0, 0 ]}
-				end={[ 1, 0 ]}
-				className='absolute top-0 left-0 w-full h-[850px] right-0'
-			/>
-			<ScrollView>
-				<View className='w-full justify-start h-full px-4 pt-10'>
-					<View className='pb-6 flex flex-row justify-between items-center'>
-						<Pill
-							title='Back'
-							handlePress={() => router.back()}
-							containerStyles='w-16 bg-white/20'
-							textStyles='text-white'
-							iconColor='#FFF'
-						/>
-					</View>
-					<View className='flex flex-row justify-between items-center'>
-						<Image
-							source={Images.SmartParkLogo}
-							contentFit='contain'
-							className='w-48 h-20'
-							tintColor='#FFF'
-						/>
-						<BlurView className='bg-[#C96000]/40 px-4 py-2 w-[110px] items-center' intensity={15} style={{ borderRadius: 20, overflow: 'hidden' }}>
-							<Text className='text-white font-GilroyMedium'>🔥 Hot Plan</Text>
-						</BlurView>
-					</View>
-					<View className='py-4'>
-						<Text className='text-5xl pb-3 font-GilroyBold text-white'>SmartPark +</Text>
-						<Text className='text-neutral-400 font-GilroyRegular text-sm'>Priority access, reserved spaces, premium security and special discounts! Park fast and worry-free. Join today and enjoy a superior parking experience!</Text>
-					</View>
-					<View className='pt-10 flex flex-row items-center'>
-						<Text className='font-GilroyBold text-6xl text-white'>$499</Text>
-						<Text className='font-GilroySemibold text-lg text-neutral-400'>/month</Text>
-					</View>
-					<DefaultButton
-						title='Join Now'
-						containerStyles='mt-6 border-2 border-white/10'
-						textStyles='text-xl'
-						handlePress={() => router.push( 'membership-info' )}
-					/>
-					<View className='flex flex-row items-center justify-between pt-6'>
-						<View className='border-2 border-neutral-400 w-24 rounded-lg h-0.5' />
-						<Text className='text-neutral-400 font-GilroySemibold text-lg'>Benefits</Text>
-						<View className='border-2 border-neutral-400 w-24 rounded-lg h-0.5' />
-					</View>
-					<Text className='font-GilroyRegular text-neutral-400 text-xs text-center'>Click on each of the benefits to see more information.</Text>
-					<View className='py-4'>
-						{benefits.map( ( benefit, index ) => (
-							<View key={index} className='px-4 pt-6 flex flex-row gap-x-2 items-center'>
-								<Image source={benefit.icon} className='w-6 h-6' />
-								<Text className='font-GilroyMedium text-base text-white'>{benefit.title}</Text>
-								<Image
-									source={Icons.Down}
-									className='w-4 h-4'
-									tintColor='#FFF'
-								/>
-							</View>
-						) )}
-					</View>
-				</View>
-			</ScrollView>
-		</SafeAreaView>
-	)
+  
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmUwZTYzODY5OWJmNGU3ZGRlZmFhZSIsImVtYWlsIjoiam9yZ2VAdXRuYS5lZHUubXgiLCJuYW1lcyI6IkVtbWEiLCJsYXN0bmFtZXMiOiJMQSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMzczMTU3NCwiZXhwIjoxNzIzODE3OTc0fQ._8Jfdj_N2QcOAPE9ucPrf1SOQTguernp4_WLSAcKgNU";
+
+  const sendLogToServer = async (level, message, token) => {
+    try {
+      await fetch('https://parkease-backend.onrender.com/api/v1/user/logs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          level: level,
+          message: message,
+        }),
+      });
+      console.log(`[Log] ${message} enviado al servidor`)
+    } catch (error) {
+      console.error('Error al enviar el log:', error);
+    }
+  }
+
+  return (
+    <SafeAreaView className='bg-white h-full'>
+      <LinearGradient
+        colors={[ '#000', '#0F4F75' ]}
+        start={[ 0, 0 ]}
+        end={[ 1, 0 ]}
+        className='absolute top-0 left-0 w-full h-[850px] right-0'
+      />
+      <ScrollView>
+        <View className='w-full justify-start h-full px-4 pt-10'>
+          <View className='pb-6 flex flex-row justify-between items-center'>
+            <Pill
+              title='Back'
+              handlePress={() => {
+                sendLogToServer('info', 'Botón "Back" presionado', token);
+                router.back();
+              }}
+              containerStyles='w-16 bg-white/20'
+              textStyles='text-white'
+              iconColor='#FFF'
+            />
+          </View>
+          <View className='flex flex-row justify-between items-center'>
+            <Image
+              source={Images.SmartParkLogo}
+              contentFit='contain'
+              className='w-48 h-20'
+              tintColor='#FFF'
+            />
+            <BlurView className='bg-[#C96000]/40 px-4 py-2 w-[110px] items-center' intensity={15} style={{ borderRadius: 20, overflow: 'hidden' }}>
+              <Text className='text-white font-GilroyMedium'>🔥 Hot Plan</Text>
+            </BlurView>
+          </View>
+          <View className='py-4'>
+            <Text className='text-5xl pb-3 font-GilroyBold text-white'>SmartPark +</Text>
+            <Text className='text-neutral-400 font-GilroyRegular text-sm'>Priority access, reserved spaces, premium security and special discounts! Park fast and worry-free. Join today and enjoy a superior parking experience!</Text>
+          </View>
+          <View className='pt-10 flex flex-row items-center'>
+            <Text className='font-GilroyBold text-6xl text-white'>$499</Text>
+            <Text className='font-GilroySemibold text-lg text-neutral-400'>/month</Text>
+          </View>
+          <DefaultButton
+            title='Join Now'
+            containerStyles='mt-6 border-2 border-white/10'
+            textStyles='text-xl'
+            handlePress={() => {
+              sendLogToServer('info', 'Botón "Join Now" presionado', token);
+              router.push('membership-info');
+            }}
+          />
+          <View className='flex flex-row items-center justify-between pt-6'>
+            <View className='border-2 border-neutral-400 w-24 rounded-lg h-0.5' />
+            <Text className='text-neutral-400 font-GilroySemibold text-lg'>Benefits</Text>
+            <View className='border-2 border-neutral-400 w-24 rounded-lg h-0.5' />
+          </View>
+          <Text className='font-GilroyRegular text-neutral-400 text-xs text-center'>Click on each of the benefits to see more information.</Text>
+          <View className='py-4'>
+            {benefits.map((benefit, index) => (
+              <View key={index} className='px-4 pt-6 flex flex-row gap-x-2 items-center'>
+                <Image source={benefit.icon} className='w-6 h-6' />
+                <Text className='font-GilroyMedium text-base text-white'>{benefit.title}</Text>
+                <Image
+                  source={Icons.Down}
+                  className='w-4 h-4'
+                  tintColor='#FFF'
+                />
+              </View>
+            ))}
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  )
 }
 
 export default MembershipBenefits

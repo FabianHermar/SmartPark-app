@@ -13,16 +13,37 @@ const ScanQR = () => {
   const [scannedText, setScannedText] = useState<string>("");
   const animation = useRef(new Animated.Value(0)).current;
 
+  const sendLogToServer = async (level, message) => {
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmUwZTYzODY5OWJmNGU3ZGRlZmFhZSIsImVtYWlsIjoiam9yZ2VAdXRuYS5lZHUubXgiLCJuYW1lcyI6IkVtbWEiLCJsYXN0bmFtZXMiOiJMQSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMzczMTU3NCwiZXhwIjoxNzIzODE3OTc0fQ._8Jfdj_N2QcOAPE9ucPrf1SOQTguernp4_WLSAcKgNU";
+    try {
+      await fetch('https://parkease-backend.onrender.com/api/v1/user/logs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          level: level,
+          message: message,
+        }),
+      });
+      console.log(`[Log] ${message} enviado al servidor`);
+    } catch (error) {
+      console.error('Error al enviar el log:', error);
+    }
+  }
+
   const askCameraPermission = async () => {
+    sendLogToServer('info', 'Solicitando permiso para usar la cámara');
     const { status } = await BarCodeScanner.requestPermissionsAsync();
     setHasPermission(status === "granted");
   };
 
   const handleAfterScanned = ({ data }: { data: string }) => {
+    sendLogToServer('success', `Código QR escaneado: ${data}`);
     setHasScanned(true);
     setScannedText(data);
     Animated.timing(animation).stop();
-    // Navigate to the /additional-info page after scanning
     router.push('/additional-info');
   };
 
@@ -50,6 +71,7 @@ const ScanQR = () => {
   }, [animation, hasScanned]);
 
   if (hasPermission === false) {
+    sendLogToServer('warning', 'Permiso de cámara denegado');
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.errorText}>Permission denied</Text>
@@ -61,6 +83,7 @@ const ScanQR = () => {
   }
 
   if (hasPermission === null) {
+    sendLogToServer('info', 'Solicitando permiso de cámara');
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.infoText}>Requesting camera Permission</Text>
@@ -78,7 +101,10 @@ const ScanQR = () => {
         <View style={styles.header}>
           <Pill
             title='Back'
-            handlePress={() => router.back()}
+            handlePress={() => {
+              sendLogToServer('info', 'Botón "Back" presionado');
+              router.back();
+            }}
             containerStyles={styles.pillContainer}
             textStyles={styles.pillText}
             isLoading={undefined}
@@ -289,13 +315,14 @@ const styles = StyleSheet.create({
     color: '#6c757d', 
     textAlign: 'center', 
     paddingHorizontal: 10, 
-    marginBottom: 8, }, 
-    linkButton: { 
-      color: '#007bff', 
-      fontFamily: 'GilroyBold', 
-      backgroundColor: '#e9ecef', 
-      paddingVertical: 8, 
-      paddingHorizontal: 16, 
-      borderRadius: 5, 
-    }, 
-  });
+    marginBottom: 8, 
+  }, 
+  linkButton: { 
+    color: '#007bff', 
+    fontFamily: 'GilroyBold', 
+    backgroundColor: '#e9ecef', 
+    paddingVertical: 8, 
+    paddingHorizontal: 16, 
+    borderRadius: 5, 
+  }, 
+});

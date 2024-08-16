@@ -9,20 +9,41 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 const MembershipInfo = () => {
 
-	const [ form, setForm ] = useState( {
+	const [form, setForm] = useState({
 		name: '',
 		lastName: '',
 		telephone: '',
 		email: '',
 		password: ''
-	} )
+	})
+
+	const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmUwZTYzODY5OWJmNGU3ZGRlZmFhZSIsImVtYWlsIjoiam9yZ2VAdXRuYS5lZHUubXgiLCJuYW1lcyI6IkVtbWEiLCJsYXN0bmFtZXMiOiJMQSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMzczMTU3NCwiZXhwIjoxNzIzODE3OTc0fQ._8Jfdj_N2QcOAPE9ucPrf1SOQTguernp4_WLSAcKgNU";
+
+	const sendLogToServer = async (level, message, token) => {
+		try {
+			await fetch('https://parkease-backend.onrender.com/api/v1/user/logs', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token}`,
+				},
+				body: JSON.stringify({
+					level: level,
+					message: message,
+				}),
+			});
+			console.log(`[Log] ${message} enviado al servidor`)
+		} catch (error) {
+			console.error('Error al enviar el log:', error);
+		}
+	}
 
 	return (
 		<SafeAreaView className='bg-white h-full'>
 			<LinearGradient
-				colors={[ '#000', '#0F4F75' ]}
-				start={[ 0, 0 ]}
-				end={[ 1, 0 ]}
+				colors={['#000', '#0F4F75']}
+				start={[0, 0]}
+				end={[1, 0]}
 				className='absolute top-0 left-0 w-full h-[850px] right-0'
 			/>
 			<ScrollView>
@@ -30,7 +51,10 @@ const MembershipInfo = () => {
 					<View className='pb-6 flex flex-row justify-between items-center'>
 						<Pill
 							title='Back'
-							handlePress={() => router.back()}
+							handlePress={() => {
+								sendLogToServer('info', 'Botón "Back" presionado', token);
+								router.back();
+							}}
 							containerStyles='w-16 bg-white/20'
 							textStyles='text-white'
 							iconColor='#FFF'
@@ -45,7 +69,7 @@ const MembershipInfo = () => {
 							title='Name'
 							placeholder='John'
 							value={form.name}
-							handleChangeText={( e ) => setForm( { ...form, name: e } )}
+							handleChangeText={(e) => setForm({ ...form, name: e })}
 							textStyles='text-white'
 							otherStyles='my-3'
 						/>
@@ -53,7 +77,7 @@ const MembershipInfo = () => {
 							title='Last Name'
 							placeholder='Doe'
 							value={form.lastName}
-							handleChangeText={( e ) => setForm( { ...form, lastName: e } )}
+							handleChangeText={(e) => setForm({ ...form, lastName: e })}
 							textStyles='text-white'
 							otherStyles='my-3'
 						/>
@@ -61,7 +85,7 @@ const MembershipInfo = () => {
 							title='Telephone'
 							placeholder='222-555-5555'
 							value={form.telephone}
-							handleChangeText={( e ) => setForm( { ...form, telephone: e } )}
+							handleChangeText={(e) => setForm({ ...form, telephone: e })}
 							textStyles='text-white'
 							otherStyles='my-3'
 						/>
@@ -69,7 +93,7 @@ const MembershipInfo = () => {
 							title='Email'
 							placeholder='Enter your email'
 							value={form.email}
-							handleChangeText={( e ) => setForm( { ...form, email: e } )}
+							handleChangeText={(e) => setForm({ ...form, email: e })}
 							textStyles='text-white'
 							otherStyles='my-3'
 							keyboardType='email-address'
@@ -77,7 +101,10 @@ const MembershipInfo = () => {
 					</View>
 					<DefaultButton
 						title='Continue'
-						handlePress={() => router.push( 'vehicle-info' )}
+						handlePress={() => {
+							sendLogToServer('info', 'Botón "Continue" presionado', token);
+							router.push('vehicle-info');
+						}}
 						containerStyles='mt-7'
 						isLoading={undefined}
 					/>

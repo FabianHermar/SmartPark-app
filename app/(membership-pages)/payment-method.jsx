@@ -8,6 +8,27 @@ import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const PaymentMethod = () => {
+	const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmUwZTYzODY5OWJmNGU3ZGRlZmFhZSIsImVtYWlsIjoiam9yZ2VAdXRuYS5lZHUubXgiLCJuYW1lcyI6IkVtbWEiLCJsYXN0bmFtZXMiOiJMQSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMzczMTU3NCwiZXhwIjoxNzIzODE3OTc0fQ._8Jfdj_N2QcOAPE9ucPrf1SOQTguernp4_WLSAcKgNU";
+
+	const sendLogToServer = async (level, message, token) => {
+		try {
+			await fetch('https://parkease-backend.onrender.com/api/v1/user/logs', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token}`,
+				},
+				body: JSON.stringify({
+					level: level,
+					message: message,
+				}),
+			});
+			console.log(`[Log] ${message} enviado al servidor`);
+		} catch (error) {
+			console.error('Error al enviar el log:', error);
+		}
+	}
+
 	return (
 		<SafeAreaView className='bg-white h-full'>
 			<LinearGradient
@@ -21,7 +42,10 @@ const PaymentMethod = () => {
 					<View className='pb-6 flex flex-row justify-between items-center'>
 						<Pill
 							title='Back'
-							handlePress={() => router.back()}
+							handlePress={() => {
+								sendLogToServer('info', 'Botón "Back" presionado', token);
+								router.back();
+							}}
 							containerStyles='w-16 bg-white/20'
 							textStyles='text-white'
 							iconColor='#FFF'
@@ -133,7 +157,10 @@ const PaymentMethod = () => {
 					</View>
 					<DefaultButton
 						title='Continue'
-						handlePress={() => undefined}
+						handlePress={() => {
+							sendLogToServer('info', 'Botón "Continue" presionado', token);
+							// Acción para continuar
+						}}
 						containerStyles='mt-7'
 						isLoading={undefined}
 					/>
@@ -145,6 +172,7 @@ const PaymentMethod = () => {
 						<Link
 							className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1'
 							href='/membership-active'
+							onPress={() => sendLogToServer('info', 'Link to "membership-active" presionado', token)}
 						>
 							Next page
 						</Link>

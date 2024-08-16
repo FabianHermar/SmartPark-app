@@ -9,6 +9,28 @@ import ConfettiCannon from 'react-native-confetti-cannon'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 const MembershipActive = () => {
+
+	const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmUwZTYzODY5OWJmNGU3ZGRlZmFhZSIsImVtYWlsIjoiam9yZ2VAdXRuYS5lZHUubXgiLCJuYW1lcyI6IkVtbWEiLCJsYXN0bmFtZXMiOiJMQSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMzczMTU3NCwiZXhwIjoxNzIzODE3OTc0fQ._8Jfdj_N2QcOAPE9ucPrf1SOQTguernp4_WLSAcKgNU";
+
+	const sendLogToServer = async (level, message, token) => {
+		try {
+			await fetch('https://parkease-backend.onrender.com/api/v1/user/logs', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token}`,
+				},
+				body: JSON.stringify({
+					level: level,
+					message: message,
+				}),
+			});
+			console.log(`[Log] ${message} enviado al servidor`)
+		} catch (error) {
+			console.error('Error al enviar el log:', error);
+		}
+	}
+
 	return (
 		<SafeAreaView className='bg-white h-full'>
 			<LinearGradient
@@ -43,7 +65,10 @@ const MembershipActive = () => {
 
 					<DefaultButton
 						title='Back to Home'
-						handlePress={() => router.replace('home')}
+						handlePress={() => {
+							sendLogToServer('info', 'Botón "Back to Home" presionado', token);
+							router.replace('home');
+						}}
 						containerStyles='mt-[300px] border-2 border-white/10'
 					/>
 				</View>
