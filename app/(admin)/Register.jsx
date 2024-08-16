@@ -9,17 +9,26 @@ import {
 	View
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { USER_BASE_URL } from '../../constants/apiUrls'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const ActivityLog = () => {
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
+	const [token, setToken] = useState(null)
 
 	useEffect(() => {
 		const fetchData = async () => {
+			const token = await AsyncStorage.getItem('token')
+			setToken(token)
 			try {
-				const response = await fetch(
-					'https://jsonplaceholder.typicode.com/posts'
-				)
+				const response = await fetch(`${USER_BASE_URL}/logs`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Bearer ${token}`
+					}
+				})
 				const result = await response.json()
 				setData(result)
 				setLoading(false)
@@ -60,16 +69,13 @@ const ActivityLog = () => {
 							{/* Table Header */}
 							<View className='flex-row'>
 								<View style={styles.headerCell}>
-									<Text>User ID</Text>
+									<Text>Log ID</Text>
 								</View>
 								<View style={styles.headerCell}>
-									<Text>ID</Text>
+									<Text>Description</Text>
 								</View>
 								<View style={styles.headerCell}>
-									<Text>Title</Text>
-								</View>
-								<View style={styles.headerCell}>
-									<Text>Body</Text>
+									<Text>Date</Text>
 								</View>
 							</View>
 
@@ -77,29 +83,15 @@ const ActivityLog = () => {
 							{data.map((post, index) => (
 								<View key={index} style={styles.row}>
 									<View style={styles.cell}>
-										<Text>{post.userId}</Text>
+										<Text>{post._id}</Text>
 									</View>
 									<View style={styles.cellColor}>
-										<Text>{post.id}</Text>
+										<Text>{post.level} {post.message}</Text>
 									</View>
 									<View style={styles.cell}>
-										<Text
-											numberOfLines={1}
-											ellipsizeMode='tail'
-											style={styles.truncate}
-										>
-											{post.title}
-										</Text>
+										<Text>{post.createdAt}</Text>
 									</View>
-									<View style={styles.cellColor}>
-										<Text
-											numberOfLines={1}
-											ellipsizeMode='tail'
-											style={styles.truncate}
-										>
-											{post.body}
-										</Text>
-									</View>
+
 								</View>
 							))}
 						</View>
@@ -132,7 +124,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#000',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#f8f8f8'
@@ -141,7 +133,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#ddd',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
@@ -149,7 +141,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#ccc',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#6dd5faaa'
