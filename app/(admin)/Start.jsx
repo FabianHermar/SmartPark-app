@@ -1,7 +1,7 @@
 import { Icons, Images } from '@/constants'
 import { Image } from 'expo-image'
 import { router } from 'expo-router'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	ScrollView,
 	StyleSheet,
@@ -10,8 +10,25 @@ import {
 	View
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { jwtDecode } from 'jwt-decode'
 
-export default function Start({ navigation }) {
+const Start = () => {
+	const [user, setUser] = useState(null);
+	useEffect(() => {
+		const fetchToken = async () => {
+			const token = await AsyncStorage.getItem('token');
+			const decoded = jwtDecode(token);
+			setUser(decoded.names);
+		}
+	
+		fetchToken();
+	});
+
+	const signout = async () => {
+		await AsyncStorage.removeItem('token');
+		router.replace('/sign-in');
+	}
 	return (
 		<SafeAreaView
 			className='bg-white h-full'
@@ -32,7 +49,7 @@ export default function Start({ navigation }) {
 										Welcome back!
 									</Text>
 									<Text className='font-GilroyBold text-white text-lg'>
-										Admin
+										{user}
 									</Text>
 								</View>
 							</View>
@@ -43,6 +60,7 @@ export default function Start({ navigation }) {
 									source={Icons.Mail}
 									className='w-6 h-6'
 									tintColor='#969AA5'
+									onPress={signout}
 								/>
 								<View className='absolute w-2 h-2 bg-red-600 rounded-full top-2 right-1.5' />
 							</View>
@@ -53,7 +71,7 @@ export default function Start({ navigation }) {
 						</View>
 					</View>
 					<Text className='text-4xl px-4 font-GilroyMedium pt-5 text-white'>
-						Hi! John, <Text className='font-GilroyRegular'>here is</Text> what's
+						Hi! {user}, <Text className='font-GilroyRegular'>here is</Text> what's
 						happening in your parking.
 					</Text>
 				</View>
@@ -68,7 +86,7 @@ export default function Start({ navigation }) {
 						<View style={styles.contenido}>
 							<TouchableOpacity
 								style={styles.button}
-								onPress={() => router.push('start')}
+								onPress={() => router.push('Admin')}
 							>
 								<Image
 									source={Icons.Home}
@@ -78,7 +96,7 @@ export default function Start({ navigation }) {
 							</TouchableOpacity>
 							<TouchableOpacity
 								style={styles.button}
-								onPress={() => router.push('profiles')}
+								onPress={() => router.push('admin-settings')}
 							>
 								<Image
 									source={Icons.Profile}
@@ -88,7 +106,7 @@ export default function Start({ navigation }) {
 							</TouchableOpacity>
 							<TouchableOpacity
 								style={styles.button}
-								onPress={() => router.push('clients')}
+								onPress={() => router.push('Clients')}
 							>
 								<Image
 									source={Icons.Clients}
@@ -108,7 +126,7 @@ export default function Start({ navigation }) {
 							</TouchableOpacity>
 							<TouchableOpacity
 								style={styles.button}
-								onPress={() => router.push('register')}
+								onPress={() => router.push('Register')}
 							>
 								<Image
 									source={Icons.Logs}
@@ -129,7 +147,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#232323',
 		width: 325,
 		height: 60,
-		position: 'absolute',
+		position: 'relative',
 		bottom: 0,
 		alignItems: 'center',
 		borderRadius: 20, // Aquí redondeas las esquinas
@@ -150,3 +168,5 @@ const styles = StyleSheet.create({
 		height: 24
 	}
 })
+
+export default Start
