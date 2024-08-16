@@ -137,18 +137,6 @@ const PaymentMethod = () => {
 						containerStyles='mt-7'
 						isLoading={undefined}
 					/>
-					<View className='flex justify-center items-center pt-4 gap-y-2'>
-						<Text className='text-secondary font-GilroyRegular text-center'>
-							This link is only for testing the views of the other pages, remove
-							it when necessary.
-						</Text>
-						<Link
-							className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1'
-							href='/membership-active'
-						>
-							Next page
-						</Link>
-					</View>
 				</View>
 			</ScrollView>
 		</SafeAreaView>
