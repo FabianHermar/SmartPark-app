@@ -24,7 +24,7 @@ const SignIn = () => {
 		setError(null)
 
 		try {
-			const response = await fetch(`${USER_BASE_URL}/user/login`, {
+			const response = await fetch(`${USER_BASE_URL}/login`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -36,14 +36,13 @@ const SignIn = () => {
 			})
 
 			if (!response.ok) {
-				throw new Error('Error while logging in')
+				throw new Error('Credenciales invalidas');
 			}
 
 			//Al parecer jala, hay que registrar primero a un usuario
-			const data = await response.json();
-			await AsyncStorage.setItem('token', data.token);
-			router.push('/home');
-			
+			const data = await response.json()
+			await AsyncStorage.setItem('token', data.token)
+			router.push('/home')
 		} catch (error) {
 			setError(error.message)
 		} finally {

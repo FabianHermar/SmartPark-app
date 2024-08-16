@@ -29,11 +29,14 @@ const SignUp = () => {
 		setError(null)
 
 		try {
-			const response = await fetch(`${USER_BASE_URL}/user/signup`, {
+			const response = await fetch(`${USER_BASE_URL}/signup`, {
 				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
 				body: JSON.stringify({
 					names: form.name,
-					lastNames: form.lastName,
+					lastames: form.lastName,
 					email: form.email,
 					phoneNumber: parseInt(form.telephone),
 					password: form.password
@@ -41,10 +44,10 @@ const SignUp = () => {
 			})
 
 			if (!response.ok) {
-				throw new Error('Error while logging in')
+				throw new Error("Missign fields!")
 			}
 
-			router.push('/sign-in')
+			router.push('sign-in')
 		} catch (error) {
 			setError(error.message)
 		}
@@ -136,7 +139,7 @@ const SignUp = () => {
 							I agree to the Terms & Conditions.
 						</Text>
 					</View>
-
+					{error && <Text className='text-red-500'>{error}</Text>}
 					<DefaultButton
 						title='Sign In'
 						handlePress={submit}
