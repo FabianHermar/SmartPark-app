@@ -46,6 +46,10 @@ export default function RootLayout () {
 				name="(membership-pages)"
 				options={{ headerShown: false }}
 			/>
+			<Stack.Screen
+				name="(admin)"
+				options={{ headerShown: false }}
+			/>
     </Stack>
   )
 }
