@@ -133,7 +133,7 @@ const PaymentMethod = () => {
 					</View>
 					<DefaultButton
 						title='Continue'
-						handlePress={() => undefined}
+						handlePress={() => router.push('membership-active')}
 						containerStyles='mt-7'
 						isLoading={undefined}
 					/>
