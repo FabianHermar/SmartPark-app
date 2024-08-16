@@ -34,15 +34,21 @@ const SignIn = () => {
 					password: form.password
 				})
 			})
-
+			
 			if (!response.ok) {
 				throw new Error('Credenciales invalidas')
 			}
 
 			//Al parecer jala, hay que registrar primero a un usuario
-			const data = await response.json()
-			await AsyncStorage.setItem('token', data.token)
-			router.push('/home')
+			const {token, isAdmin} = await response.json()
+			await AsyncStorage.setItem('token', token)
+
+			if (!isAdmin) {
+				router.push('/home');
+			} else {
+				router.push('/Admin');
+			}
+			
 		} catch (error) {
 			setError(error.message)
 		} finally {
@@ -124,18 +130,6 @@ const SignIn = () => {
 						<Link
 							className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1'
 							href='/home'
-						>
-							Next page
-						</Link>
-					</View>
-					<View className='flex justify-center items-center pt-4 gap-y-2'>
-						<Text className='text-secondary font-GilroyRegular text-center'>
-							This link is only for testing the views of the other pages, remove
-							it when necessary.
-						</Text>
-						<Link
-							className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1'
-							href='/start'
 						>
 							Next page
 						</Link>
