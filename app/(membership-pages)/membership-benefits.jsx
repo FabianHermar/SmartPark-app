@@ -52,7 +52,7 @@ const MembershipBenefits = () => {
 						title='Join Now'
 						containerStyles='mt-6 border-2 border-white/10'
 						textStyles='text-xl'
-						handlePress={() => router.push( 'membership-info' )}
+						handlePress={() => router.push( 'vehicle-info' )}
 					/>
 					<View className='flex flex-row items-center justify-between pt-6'>
 						<View className='border-2 border-neutral-400 w-24 rounded-lg h-0.5' />
