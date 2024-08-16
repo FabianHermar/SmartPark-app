@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useEffect, useState } from 'react'
 import { USER_BASE_URL } from '../../constants/apiUrls'
+import Pill from '@/components/Pill'
 
 const AdminSettings = () => {
 	const [token, setToken] = useState(null)
@@ -23,8 +24,8 @@ const AdminSettings = () => {
 			}
 		}
 
-		fetchToken();
-	}, []);
+		fetchToken()
+	}, [])
 
 	const signout = async () => {
 		try {
@@ -32,20 +33,19 @@ const AdminSettings = () => {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${token}`
+					Authorization: `Bearer ${token}`
 				}
-			});
-			console.log(response);
+			})
+			console.log(response)
 			if (!response.ok) {
-				throw new Error('Error while signing out');
+				throw new Error('Error while signing out')
 			}
 
-			await AsyncStorage.removeItem('token');
-			router.replace('sign-in');
-
+			await AsyncStorage.removeItem('token')
+			router.replace('sign-in')
 		} catch (error) {
 			console.log(error.message)
-			setError(error.message);
+			setError(error.message)
 		}
 	}
 
@@ -60,6 +60,14 @@ const AdminSettings = () => {
 					className='w-full h-full absolute -top-56 opacity-80 left-0'
 				/>
 				<View className='w-full justify-start h-full px-4 pt-10'>
+					<View className='pb-6 flex flex-row justify-between items-center'>
+						<Pill
+							title='Back'
+							handlePress={() => router.back()}
+							containerStyles='w-16'
+							textStyles={undefined}
+						/>
+					</View>
 					<View className='pb-16 flex flex-row justify-between items-center'>
 						<Text className='text-5xl font-GilroyBold'>Settings</Text>
 					</View>
