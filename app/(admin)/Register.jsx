@@ -1,138 +1,159 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Image,TouchableOpacity } from 'react-native';
-import constants from 'expo-constants';
+import Pill from '@/components/Pill'
+import { router } from 'expo-router'
+import React, { useEffect, useState } from 'react'
+import {
+	ActivityIndicator,
+	ScrollView,
+	StyleSheet,
+	Text,
+	View
+} from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
-export default function Register({navigation}) {
-  return (
-    <View style={styles.container}>
-       <View style={styles.goback}>
-        <View style={styles.contenido}>
-        <TouchableOpacity style={styles.back} onPress={() => navigation.navigate('Start')}>
-          {/*<Image source={require('../../assets/images/flech.png')} style={styles.flech}/>*/}
-          <Text style={styles.go}>back</Text>
-        </TouchableOpacity>
-         </View>
-      </View>
-      <Image source={require('../../assets/images/blue-gradient2.png')} style={styles.image} />
-      <Text style={styles.title}>Register</Text>
-      <StatusBar style="auto" />
-        <View>
-            <View style={styles.Registers}>
-             <ScrollView>
-             <Text style={styles.Texts}>hola</Text>
-             </ScrollView>
-            </View>
-        </View>  
+const ActivityLog = () => {
+	const [data, setData] = useState([])
+	const [loading, setLoading] = useState(true)
 
-      {/*barra */}
-      <View  style={styles.barra}>
-      <View style={styles.contenido}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
-        <Image source={require('../../assets/images/Perfil.png')} style={styles.icons}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Admins')}>
-            {/*<Text>Hola</Text>*/}
-            <Image source={require('../../assets/images/Admin.png')} style={styles.icons}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Clients')}>
-        <Image source={require('../../assets/images/clients.png')} style={styles.icons}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Membership')}>
-        <Image source={require('../../assets/images/membership.png')} style={styles.icons}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Register')}>
-        <Image source={require('../../assets/images/register.png')} style={styles.icons}/>
-        </TouchableOpacity>
-      </View>
-      </View>
-    </View>
-  );
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch(
+					'https://jsonplaceholder.typicode.com/posts'
+				)
+				const result = await response.json()
+				setData(result)
+				setLoading(false)
+			} catch (error) {
+				console.error('Error fetching data:', error)
+				setLoading(false)
+			}
+		}
+
+		fetchData()
+	}, [])
+
+	if (loading) {
+		return (
+			<View style={styles.loaderContainer}>
+				<ActivityIndicator size='large' color='#367BFF' />
+			</View>
+		)
+	}
+
+	return (
+		<SafeAreaView className='bg-white h-full'>
+			<ScrollView>
+				<View className='flex p-4 bg-white'>
+					<View className='pb-6 flex flex-row justify-between items-center'>
+						<Pill
+							title='Back'
+							handlePress={() => router.back()}
+							containerStyles='w-16'
+							textStyles={undefined}
+						/>
+					</View>
+					<Text className='text-4xl pb-4 font-GilroySemibold text-center'>
+						Activity Log
+					</Text>
+					<ScrollView horizontal={true}>
+						<View>
+							{/* Table Header */}
+							<View className='flex-row'>
+								<View style={styles.headerCell}>
+									<Text>User ID</Text>
+								</View>
+								<View style={styles.headerCell}>
+									<Text>ID</Text>
+								</View>
+								<View style={styles.headerCell}>
+									<Text>Title</Text>
+								</View>
+								<View style={styles.headerCell}>
+									<Text>Body</Text>
+								</View>
+							</View>
+
+							{/* Data Rows */}
+							{data.map((post, index) => (
+								<View key={index} style={styles.row}>
+									<View style={styles.cell}>
+										<Text>{post.userId}</Text>
+									</View>
+									<View style={styles.cellColor}>
+										<Text>{post.id}</Text>
+									</View>
+									<View style={styles.cell}>
+										<Text
+											numberOfLines={1}
+											ellipsizeMode='tail'
+											style={styles.truncate}
+										>
+											{post.title}
+										</Text>
+									</View>
+									<View style={styles.cellColor}>
+										<Text
+											numberOfLines={1}
+											ellipsizeMode='tail'
+											style={styles.truncate}
+										>
+											{post.body}
+										</Text>
+									</View>
+								</View>
+							))}
+						</View>
+					</ScrollView>
+				</View>
+			</ScrollView>
+		</SafeAreaView>
+	)
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: constants.statusBarHeight,
-    padding: 10,
-    paddingTop: 30,
-  },
-  go: {
-    color: '#000000',
-    fontWeight: 'bold',
-  },
-  goback:{
-   backgroundColor: '#a9a9a9',
-   opacity: 0.4,
-    width: 100,
-    height: 50,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    top: 70,
-    left: 25,
-    //borderWidth: 2, 
-    
-  },
-  contenido: {
-    flexDirection: 'row',
-    padding: 10
-  },
-  title: {
-    position: 'static',
-    top: 100,
-    fontSize: 40,
-    fontWeight: 'bold',
-    position: 'absolute',
-    top: 140
-  },
-  image: {
-    width: 500,
-    height: 390,
-    position: 'absolute',
-    top: 0,
-    left: 165,
-  },
-  Registers: {
-    backgroundColor:'#BEE7FF',
-    width: 380,
-    height: 500,
-    position: 'estatic',
-    top: 50,
-    borderRadius: 20
-  },
-  Texts:{
-    margin: 15,
-    textAlign: 'auto',
-    fontSize: 16
-  },
-  barra: {
-    backgroundColor: '#232323',
-    width: 370,
-    height: 50,
-    position: 'absolute',
-    bottom: 40,
-    alignItems: 'center',
-    borderRadius: 20, // Aquí redondeas las esquinas
-    margin: 10,
-    justifyContent: 'center',
-  },
-  contenido: {
-    flexDirection: 'row',
-    padding: 10
-  },
-  button: {
-    width: '20%',
-    
-  },
-  icons: {
-    position: 'static',
-    left:18,
-    width: 35,
-    height: 35
-  }
-});
+	container: {
+		flex: 1,
+		padding: 16,
+		backgroundColor: '#fff'
+	},
+	loaderContainer: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	truncate: {
+		fontSize: 16,
+		width: 100
+	},
+	row: {
+		flexDirection: 'row'
+	},
+	headerCell: {
+		padding: 10,
+		borderWidth: 1,
+		borderColor: '#000',
+		minWidth: 150,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#f8f8f8'
+	},
+	cell: {
+		padding: 10,
+		borderWidth: 1,
+		borderColor: '#ddd',
+		minWidth: 150,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	cellColor: {
+		padding: 10,
+		borderWidth: 1,
+		borderColor: '#ccc',
+		minWidth: 150,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#6dd5faaa'
+	}
+})
+
+export default ActivityLog
