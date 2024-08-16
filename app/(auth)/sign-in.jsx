@@ -2,12 +2,12 @@ import DefaultButton from '@/components/DefaultButton'
 import FormField from '@/components/FormField'
 import Pill from '@/components/Pill'
 import { Images } from '@/constants'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Image } from 'expo-image'
 import { Link, router } from 'expo-router'
 import React, { useState } from 'react'
 import { ScrollView, Text, TouchableWithoutFeedback, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { USER_BASE_URL } from '../../constants/apiUrls'
 
 const SignIn = () => {
@@ -36,7 +36,7 @@ const SignIn = () => {
 			})
 
 			if (!response.ok) {
-				throw new Error('Credenciales invalidas');
+				throw new Error('Credenciales invalidas')
 			}
 
 			//Al parecer jala, hay que registrar primero a un usuario
@@ -124,6 +124,18 @@ const SignIn = () => {
 						<Link
 							className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1'
 							href='/home'
+						>
+							Next page
+						</Link>
+					</View>
+					<View className='flex justify-center items-center pt-4 gap-y-2'>
+						<Text className='text-secondary font-GilroyRegular text-center'>
+							This link is only for testing the views of the other pages, remove
+							it when necessary.
+						</Text>
+						<Link
+							className='text-primary font-GilroyBold bg-neutral-300 px-3 py-1'
+							href='/start'
 						>
 							Next page
 						</Link>
