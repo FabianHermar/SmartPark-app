@@ -87,6 +87,7 @@ const Admin = () => {
 
 							{/* Data Rows */}
 							{data.map((post, index) => (
+								post.isAdmin &&
 								<View key={index} style={styles.row}>
 									<View style={styles.cell}>
 										<Text>{post._id}</Text>
