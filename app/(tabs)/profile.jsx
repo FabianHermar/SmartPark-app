@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icons, Images } from '@/constants';
 import { Image } from 'expo-image';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { jwtDecode } from 'jwt-decode';
 
 const UserProfile = () => {
+	const [user, setUser] = useState(null);
+	const [token, setToken] = useState(null);
+	
+	useEffect(()=>{
+		const fetchToken = async () => {
+			try {
+				const token = await AsyncStorage.getItem('token')
+				const decoded = jwtDecode(token)
+				const userName = decoded.names;
+				setToken(token);
+				setUser(userName);
+
+			} catch (error) {
+				console.log('Error retrieving token '+error.message);
+			}
+		};
+
+		fetchToken();
+	}, [])
+
 	const navigation = useNavigation();
 	return (
 		<SafeAreaView className='bg-white h-full'>
@@ -24,7 +46,7 @@ const UserProfile = () => {
 						/>
 					</View>
 					<View className="text-center px-4 justify-center items-center pt-4">
-						<Text className="text-4xl font-GilroyBold">John Doe</Text>
+						<Text className="text-4xl font-GilroyBold">{user}</Text>
 						<Text className="mt-2 text-gray-500 text-sm font-GilroyRegular text-center">
 							Trail explorer and wildlife lover. Technological geek always looking for the latest news.
 						</Text>
