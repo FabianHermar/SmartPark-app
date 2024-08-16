@@ -36,13 +36,13 @@ const SignUp = () => {
 				},
 				body: JSON.stringify({
 					names: form.name,
-					lastames: form.lastName,
+					lastnames: form.lastName,
 					email: form.email,
 					phoneNumber: parseInt(form.telephone),
 					password: form.password
 				})
 			})
-
+	
 			if (!response.ok) {
 				throw new Error("Missign fields!")
 			}
