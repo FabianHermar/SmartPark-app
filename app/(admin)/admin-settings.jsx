@@ -35,8 +35,8 @@ const AdminSettings = () => {
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${token}`
 				}
-			})
-			console.log(response)
+			});
+
 			if (!response.ok) {
 				throw new Error('Error while signing out')
 			}
@@ -44,7 +44,6 @@ const AdminSettings = () => {
 			await AsyncStorage.removeItem('token')
 			router.replace('sign-in')
 		} catch (error) {
-			console.log(error.message)
 			setError(error.message)
 		}
 	}
