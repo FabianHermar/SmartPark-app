@@ -46,7 +46,7 @@ const SignIn = () => {
 			if (!isAdmin) {
 				router.push('/home');
 			} else {
-				router.push('/Admin');
+				router.push('/Start');
 			}
 			
 		} catch (error) {
