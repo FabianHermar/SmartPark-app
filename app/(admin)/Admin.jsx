@@ -2,33 +2,54 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Image,TouchableOpacity } from 'react-native';
 import constants from 'expo-constants';
+import color from 'color';
 
-export default function Register({navigation}) {
+export default function Admins({navigation}) {
+  const orcolor = '#dcdcdc';
+  //const lighteColor = color(orcolor).lighten(0.2).hex();
+  const transparentColor = color(orcolor).alpha(0.5).rgb().hex();
+  const tableHead = ['ID', 'NAME', 'LASTNAME', 'NUMBER', 'EMAIL', 'PASSWORD'];
+  const tableData = [
+    ['1', 'Melani', 'Ruvalcaba', '4651292330', 'melani@gmail.com', '123'],
+    ['2', 'Jorge', 'Almanza', '4651292330', 'jorge@gmail.com', '123'],
+    ['3', 'Omar', 'Ortiz', '4651292330', 'Omar@gmail.com', '123'],
+    ['4', 'Feranda', 'Romo', '4651292330', 'fernanda@gmail.com', '123']
+  ];
+
   return (
     <View style={styles.container}>
-       <View style={styles.goback}>
+      <View style={styles.goback}>
         <View style={styles.contenido}>
         <TouchableOpacity style={styles.back} onPress={() => navigation.navigate('Start')}>
-          {/*<Image source={require('../../assets/images/flech.png')} style={styles.flech}/>*/}
+          {/*<Image source={require('./assets/flech.png')} style={styles.flech}/>*/}
           <Text style={styles.go}>back</Text>
         </TouchableOpacity>
          </View>
       </View>
-      <Image source={require('../.../../assets/images/images/blue-gradient2.png')} style={styles.image} />
-      <Text style={styles.title}>Register</Text>
+      <Image source={require('../../assets/images/blue-gradient2.png')} style={styles.image} />
+      <Text style={styles.title}>Admins</Text>
       <StatusBar style="auto" />
-        <View>
-            <View style={styles.Registers}>
-             <ScrollView>
-             <Text style={styles.Texts}>hola</Text>
-             </ScrollView>
-            </View>
-        </View>  
-
-      {/*barra */}
-      <View  style={styles.barra}>
-      <View style={styles.contenido}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
+      <ScrollView horizontal={true}>
+        <View style={styles.table}>
+          <View style={styles.head}>
+            {tableHead.map((item, index) => (
+              <Text key={index} style={styles.title_head}>{item}</Text>
+            ))}
+          </View>
+          <ScrollView style={styles.dataWrapper}>
+            {tableData.map((rowData, index) => (
+              <View key={index} style={[styles.row, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>
+                {rowData.map((cellData, cellIndex) => (
+                  <Text key={cellIndex} style={styles.text}>{cellData}</Text>
+                ))}
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      </ScrollView>
+      <View style={styles.barra}>
+        <View style={styles.contenido}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profile')}>
         <Image source={require('../../assets/images/Perfil.png')} style={styles.icons}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Admins')}>
@@ -44,7 +65,8 @@ export default function Register({navigation}) {
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Register')}>
         <Image source={require('../../assets/images/register.png')} style={styles.icons}/>
         </TouchableOpacity>
-      </View>
+
+        </View>
       </View>
     </View>
   );
@@ -58,7 +80,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: constants.statusBarHeight,
     padding: 10,
-    paddingTop: 30,
   },
   go: {
     color: '#000000',
@@ -78,17 +99,44 @@ const styles = StyleSheet.create({
     //borderWidth: 2, 
     
   },
-  contenido: {
+  head: {
     flexDirection: 'row',
-    padding: 10
+    height: 40,
+    backgroundColor: '#83D1FF',
+    //borderWidth: 1,
+    //borderColor: '#000',
+  },
+  title_head: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    margin: 6,
+    width: 200, 
+  },
+  text: {
+    margin: 6,
+    width: 200,
+    textAlign: 'center',
+  },
+  dataWrapper: {
+    marginTop: -1,
+  },
+  row: {
+    flexDirection: 'row',
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#BEE7FF',
+  },
+  evenRow: {
+    backgroundColor: '#fff', // Color para las filas pares
+  },
+  oddRow: {
+    backgroundColor: '#BEE7FF', // Color para las filas impares
   },
   title: {
     position: 'static',
     top: 100,
     fontSize: 40,
     fontWeight: 'bold',
-    position: 'absolute',
-    top: 140
   },
   image: {
     width: 500,
@@ -97,18 +145,9 @@ const styles = StyleSheet.create({
     top: 0,
     left: 165,
   },
-  Registers: {
-    backgroundColor:'#BEE7FF',
-    width: 380,
-    height: 500,
-    position: 'estatic',
-    top: 50,
-    borderRadius: 20
-  },
-  Texts:{
-    margin: 15,
-    textAlign: 'auto',
-    fontSize: 16
+  table: {
+    position: 'static',
+    top: 200,
   },
   barra: {
     backgroundColor: '#232323',

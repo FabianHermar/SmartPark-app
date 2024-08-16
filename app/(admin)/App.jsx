@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Start from './Start';
 import Profile from './Profile'
-import Admins from './Admins';
+import Admins from './Admin';
 import Clients from './Clients';
 import Memberships from './Memberships';
 import Register from './Register';

@@ -11,7 +11,7 @@ export default function Start({navigation}) {
      {/* <Image source={require('../../assets/images/blue-gradient2.png')} style={styles.image} />*/}
      <Text style={styles.title}>Welcome...</Text>
       <View style={styles.image1}>
-        <Image source={require('../../assets/images/xd.jpg')} style={styles.inicio}/>
+        <Image source={require('../../assets/images/Admin.png')} style={styles.inicio}/>
         </View>
         <View style={styles.data}>
           <Text style={styles.data1}>Luis Gutierrez</Text>
