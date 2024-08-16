@@ -35,7 +35,6 @@ const Settings = () => {
 					'Authorization': `Bearer ${token}`
 				}
 			});
-			console.log(response);
 			if (!response.ok) {
 				throw new Error('Error while signing out');
 			}
@@ -44,7 +43,6 @@ const Settings = () => {
 			router.replace('sign-in');
 
 		} catch (error) {
-			console.log(error.message)
 			setError(error.message);
 		}
 	}
