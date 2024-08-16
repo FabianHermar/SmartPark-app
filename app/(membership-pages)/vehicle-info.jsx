@@ -3,9 +3,13 @@ import FormField from '@/components/FormField'
 import Pill from '@/components/Pill'
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
-import { useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useState, useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { jwtDecode } from 'jwt-decode'
+import { MEMBERSHIP_BASE_URL } from '../../constants/apiUrls'
+
 
 const VehicleInfo = () => {
 
@@ -16,13 +20,69 @@ const VehicleInfo = () => {
 		color: '',
 		licensePlate: ''
 	} )
+	
+	const [user, setUser] = useState(null);
+	const [token, setToken] = useState(null);
+	
+	
+	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [error, setError] = useState(null)
+	
+	useEffect(()=>{
+		const fetchToken = async () => {
+			try {
+				const token = await AsyncStorage.getItem('token')
+				const decoded = jwtDecode(token)
+				const userName = decoded.names;
+				setToken(token);
+				setUser(userName);
 
+			} catch (error) {
+				console.log('Error retrieving token '+error.message);
+			}
+		};
+
+		fetchToken();
+	}, []);
+
+	const submit = async () => {
+		try {
+			const response = await fetch(`${MEMBERSHIP_BASE_URL}/new`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${token}`
+				},
+				body: JSON.stringify({
+					clientVehicle: {
+						plateNumber: form.licensePlate,
+						model: form.model,
+						year: form.year,
+						color: form.color
+					},
+					lot: 12,
+					isActive: true
+				})
+			});
+
+			if (!response.ok) {
+				throw new Error('Error while registering new membership')
+			}
+
+			router.push('payment-method');
+			
+		} catch (error) {
+			console.log(error.message)
+			setError(error.message)
+		} finally {
+			setIsSubmitting(false)
+		}
+	}
 	return (
 		<SafeAreaView className='bg-white h-full'>
 			<LinearGradient
 				colors={[ '#000', '#0F4F75' ]}
-				start={[ 0, 0 ]}
-				end={[ 1, 0 ]}
+				start={[ 0, 0 ]}				end={[ 1, 0 ]}
 				className='absolute top-0 left-0 w-full h-[850px] right-0'
 			/>
 			<ScrollView>
@@ -86,9 +146,9 @@ const VehicleInfo = () => {
 					</View>
 					<DefaultButton
 						title='Continue'
-						handlePress={() => router.push( 'payment-method' )}
+						handlePress={submit}
 						containerStyles='mt-7'
-						isLoading={undefined}
+						isLoading={isSubmitting}
 					/>
 				</View>
 			</ScrollView>
