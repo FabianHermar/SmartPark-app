@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#000',
-		width: 250,
+		width: 300,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#f8f8f8'
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#ddd',
-		width: 250,
+		width: 300,
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#ccc',
-		width: 250,
+		width: 300,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#6dd5faaa'
