@@ -24,6 +24,10 @@ const SignIn = () => {
 		setError(null)
 
 		try {
+			if (form.email === '' || form.password === '') {
+				throw new Error('Empty fields!')
+			}
+
 			const response = await fetch(`${USER_BASE_URL}/login`, {
 				method: 'POST',
 				headers: {
@@ -36,7 +40,7 @@ const SignIn = () => {
 			})
 			
 			if (!response.ok) {
-				throw new Error('Credenciales invalidas')
+				throw new Error('Invalid credentials!')
 			}
 
 			//Al parecer jala, hay que registrar primero a un usuario

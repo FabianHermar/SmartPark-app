@@ -29,6 +29,10 @@ const SignUp = () => {
 		setError(null)
 
 		try {
+			if (form.email === '' || form.lastName === ''|| form.email === '' || form.telephone === '' || form.password === '') {
+				throw new Error('Empty fields!')	
+			}
+
 			const response = await fetch(`${USER_BASE_URL}/signup`, {
 				method: 'POST',
 				headers: {
@@ -44,7 +48,7 @@ const SignUp = () => {
 			})
 
 			if (!response.ok) {
-				throw new Error('Missign fields!')
+				throw new Error('Invalid credentials!')
 			}
 
 			router.push('profile-setup')
