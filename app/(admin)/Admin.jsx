@@ -9,16 +9,28 @@ import {
 	View
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { USER_BASE_URL } from '../../constants/apiUrls'
 
 const Admin = () => {
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
+	const [token, setToken] = useState(null)
 
 	useEffect(() => {
 		const fetchData = async () => {
+			const token = await AsyncStorage.getItem('token');
+			setToken(token)
 			try {
 				const response = await fetch(
-					'https://jsonplaceholder.typicode.com/posts'
+					`${USER_BASE_URL}/list`,
+					{
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						}
+					}
 				)
 				const result = await response.json()
 				setData(result)
@@ -63,13 +75,13 @@ const Admin = () => {
 									<Text>User ID</Text>
 								</View>
 								<View style={styles.headerCell}>
-									<Text>ID</Text>
+									<Text>Names</Text>
 								</View>
 								<View style={styles.headerCell}>
-									<Text>Title</Text>
+									<Text>Last Names</Text>
 								</View>
 								<View style={styles.headerCell}>
-									<Text>Body</Text>
+									<Text>Email</Text>
 								</View>
 							</View>
 
@@ -77,27 +89,25 @@ const Admin = () => {
 							{data.map((post, index) => (
 								<View key={index} style={styles.row}>
 									<View style={styles.cell}>
-										<Text>{post.userId}</Text>
+										<Text>{post._id}</Text>
 									</View>
 									<View style={styles.cellColor}>
-										<Text>{post.id}</Text>
+										<Text>{post.names}</Text>
 									</View>
 									<View style={styles.cell}>
 										<Text
 											numberOfLines={1}
 											ellipsizeMode='tail'
-											style={styles.truncate}
 										>
-											{post.title}
+											{post.lastnames}
 										</Text>
 									</View>
 									<View style={styles.cellColor}>
 										<Text
 											numberOfLines={1}
 											ellipsizeMode='tail'
-											style={styles.truncate}
 										>
-											{post.body}
+											{post.email}
 										</Text>
 									</View>
 								</View>
@@ -132,7 +142,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#000',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#f8f8f8'
@@ -141,7 +151,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#ddd',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
@@ -149,7 +159,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#ccc',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#6dd5faaa'
