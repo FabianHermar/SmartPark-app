@@ -9,17 +9,27 @@ import {
 	View
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { MEMBERSHIP_BASE_URL } from '../../constants/apiUrls'
 
 const Members = () => {
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
+	const [token, setToken] = useState(null)
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch(
-					'https://jsonplaceholder.typicode.com/posts'
-				)
+				const token = await AsyncStorage.getItem('token')
+				setToken(token)
+
+				const response = await fetch(`${MEMBERSHIP_BASE_URL}/list`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Bearer ${token}`
+					}
+				})
 				const result = await response.json()
 				setData(result)
 				setLoading(false)
@@ -60,16 +70,25 @@ const Members = () => {
 							{/* Table Header */}
 							<View className='flex-row'>
 								<View style={styles.headerCell}>
-									<Text>User ID</Text>
+									<Text>Membership ID</Text>
 								</View>
 								<View style={styles.headerCell}>
-									<Text>ID</Text>
+									<Text>Owner ID</Text>
 								</View>
 								<View style={styles.headerCell}>
-									<Text>Title</Text>
+									<Text>Ownner'n Name</Text>
 								</View>
 								<View style={styles.headerCell}>
-									<Text>Body</Text>
+									<Text>Vehicle Description</Text>
+								</View>
+								<View style={styles.headerCell}>
+									<Text>Vehicle Licence Plate</Text>
+								</View>
+								<View style={styles.headerCell}>
+									<Text>Lot</Text>
+								</View>
+								<View style={styles.headerCell}>
+									<Text>Status</Text>
 								</View>
 							</View>
 
@@ -77,10 +96,10 @@ const Members = () => {
 							{data.map((post, index) => (
 								<View key={index} style={styles.row}>
 									<View style={styles.cell}>
-										<Text>{post.userId}</Text>
+										<Text>{post._id}</Text>
 									</View>
 									<View style={styles.cellColor}>
-										<Text>{post.id}</Text>
+										<Text>{post.client._id}</Text>
 									</View>
 									<View style={styles.cell}>
 										<Text
@@ -88,16 +107,40 @@ const Members = () => {
 											ellipsizeMode='tail'
 											style={styles.truncate}
 										>
-											{post.title}
+											{post.client.names} {post.client.lastnames}
 										</Text>
 									</View>
 									<View style={styles.cellColor}>
 										<Text
 											numberOfLines={1}
 											ellipsizeMode='tail'
-											style={styles.truncate}
 										>
-											{post.body}
+											{post.clientVehicle.model}, {post.clientVehicle.color},{' '}
+											{post.clientVehicle.year}
+										</Text>
+									</View>
+									<View style={styles.cell}>
+										<Text
+											numberOfLines={1}
+											ellipsizeMode='tail'
+										>
+											{post.clientVehicle.plateNumber}
+										</Text>
+									</View>
+									<View style={styles.cellColor}>
+										<Text
+											numberOfLines={1}
+											ellipsizeMode='tail'
+										>
+											{post.lot}
+										</Text>
+									</View>
+									<View style={styles.cell}>
+										<Text
+											numberOfLines={1}
+											ellipsizeMode='tail'
+										>
+											{post.isActive ? 'Active' : 'Unactive'}
 										</Text>
 									</View>
 								</View>
@@ -132,7 +175,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#000',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#f8f8f8'
@@ -141,7 +184,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#ddd',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
@@ -149,7 +192,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderWidth: 1,
 		borderColor: '#ccc',
-		minWidth: 150,
+		width: 250,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#6dd5faaa'
