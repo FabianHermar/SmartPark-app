@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#232323',
 		width: 325,
 		height: 60,
-		position: 'relative',
+		position: 'relative', //Lo cambie a 'relative' porque no aparecia en mi pantalla
 		bottom: 0,
 		alignItems: 'center',
 		borderRadius: 20, // Aquí redondeas las esquinas
